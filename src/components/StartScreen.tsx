@@ -42,7 +42,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             <h1 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 tracking-tight">
               Desafio da Trinca
             </h1>
-            <p className="text-base md:text-xl text-blue-100 mb-4 md:mb-8 leading-relaxed">
+            <p className="text-sm md:text-xl text-blue-100 mb-4 md:mb-8 leading-relaxed px-2">
               Teste seus conhecimentos sobre a Iniciação na Ordem DeMolay
             </p>
           </div>
@@ -77,14 +77,14 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </div>
           </div>
 
-          <div className="space-y-3 mb-4 md:mb-8">
-            <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-2 md:p-4 border border-white/10">
+          <div className="space-y-2 md:space-y-3 mb-4 md:mb-8">
+            <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
               💡 <strong>Como funciona:</strong> Responda às 15 perguntas sobre a Ordem DeMolay, 
               começando pelas mais fáceis até as mais desafiadoras. Cada nível de dificuldade tem 
               um tempo diferente para responder. No final, veja seu desempenho 
               e aprenda com as explicações detalhadas!
             </div>
-            <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-2 md:p-4 border border-orange-300/20">
+            <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-3 md:p-4 border border-orange-300/20">
               ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s)
             </div>
           </div>
