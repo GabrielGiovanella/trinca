@@ -43,7 +43,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
               Desafio da Trinca
             </h1>
             <p className="text-sm md:text-xl text-blue-100 mb-4 md:mb-8 leading-relaxed px-2">
-              Teste seus conhecimentos sobre a Iniciação na Ordem DeMolay
+              Teste seus conhecimentos sobre a Ordem DeMolay
             </p>
           </div>
 
