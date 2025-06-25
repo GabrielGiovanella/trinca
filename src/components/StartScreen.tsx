@@ -42,9 +42,6 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             <h1 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 tracking-tight">
               Desafio da Trinca
             </h1>
-            <p className="text-sm md:text-xl text-blue-100 mb-4 md:mb-8 leading-relaxed px-2">
-              Teste seus conhecimentos sobre a Ordem DeMolay
-            </p>
           </div>
 
           <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-6 mb-4 md:mb-8">
