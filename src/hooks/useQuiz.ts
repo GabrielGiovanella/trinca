@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { QuizState, GameStats } from '../types/Quiz';
+import { QuizState, GameStats, ShuffledQuestion } from '../types/Quiz';
 import { questions } from '../data/questions';
+import { shuffleAllQuestions } from '../utils/shuffleQuestions';
 
 export const useQuiz = () => {
   const [quizState, setQuizState] = useState<QuizState>({
@@ -9,7 +10,8 @@ export const useQuiz = () => {
     answers: [],
     isCompleted: false,
     showResults: false,
-    playerName: ''
+    playerName: '',
+    shuffledQuestions: []
   });
 
   const [timeLeft, setTimeLeft] = useState(15); // Start with 15 seconds for first question (easy)
@@ -42,21 +44,29 @@ export const useQuiz = () => {
   }, [gameStarted, quizState.currentQuestion, quizState.isCompleted]);
 
   const startGame = (playerName: string) => {
-    setQuizState(prev => ({ ...prev, playerName }));
+    // Shuffle all questions when starting the game
+    const shuffledQuestions = shuffleAllQuestions(questions);
+    
+    setQuizState(prev => ({ 
+      ...prev, 
+      playerName,
+      shuffledQuestions
+    }));
     setGameStarted(true);
     // Set initial time based on first question difficulty
-    const initialTime = getTimeLimit(questions[0].difficulty);
+    const initialTime = getTimeLimit(shuffledQuestions[0].difficulty);
     setTimeLeft(initialTime);
   };
 
   const handleAnswer = (answer: number) => {
+    const currentShuffledQuestion = quizState.shuffledQuestions[quizState.currentQuestion];
     const newAnswers = [...quizState.answers, answer];
-    const isCorrect = answer === questions[quizState.currentQuestion].correctAnswer;
+    const isCorrect = answer === currentShuffledQuestion.shuffledCorrectAnswer;
     const newScore = isCorrect ? quizState.score + 1 : quizState.score;
 
-    if (quizState.currentQuestion < questions.length - 1) {
+    if (quizState.currentQuestion < quizState.shuffledQuestions.length - 1) {
       const nextQuestionIndex = quizState.currentQuestion + 1;
-      const nextQuestionDifficulty = questions[nextQuestionIndex].difficulty;
+      const nextQuestionDifficulty = quizState.shuffledQuestions[nextQuestionIndex].difficulty;
       const nextTimeLimit = getTimeLimit(nextQuestionDifficulty);
       
       setQuizState({
@@ -84,22 +94,23 @@ export const useQuiz = () => {
       answers: [],
       isCompleted: false,
       showResults: false,
-      playerName: ''
+      playerName: '',
+      shuffledQuestions: []
     });
     setGameStarted(false);
     setTimeLeft(15); // Reset to initial time for easy questions
   };
 
   const getGameStats = (): GameStats => {
-    const totalQuestions = questions.length;
+    const totalQuestions = quizState.shuffledQuestions.length;
     const correctAnswers = quizState.score;
     
     let easyCorrect = 0;
     let mediumCorrect = 0;
     let hardCorrect = 0;
 
-    questions.forEach((question, index) => {
-      if (quizState.answers[index] === question.correctAnswer) {
+    quizState.shuffledQuestions.forEach((question, index) => {
+      if (quizState.answers[index] === question.shuffledCorrectAnswer) {
         switch (question.difficulty) {
           case 'easy':
             easyCorrect++;
@@ -130,7 +141,7 @@ export const useQuiz = () => {
     quizState,
     timeLeft,
     gameStarted,
-    currentQuestion: questions[quizState.currentQuestion],
+    currentQuestion: quizState.shuffledQuestions[quizState.currentQuestion],
     startGame,
     handleAnswer,
     resetQuiz,

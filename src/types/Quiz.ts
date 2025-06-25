@@ -8,6 +8,11 @@ export interface Question {
   videoUrl?: string;
 }
 
+export interface ShuffledQuestion extends Question {
+  shuffledOptions: string[];
+  shuffledCorrectAnswer: number;
+}
+
 export interface QuizState {
   currentQuestion: number;
   score: number;
@@ -15,6 +20,7 @@ export interface QuizState {
   isCompleted: boolean;
   showResults: boolean;
   playerName: string;
+  shuffledQuestions: ShuffledQuestion[];
 }
 
 export interface GameStats {

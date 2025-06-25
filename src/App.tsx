@@ -37,7 +37,7 @@ function App() {
     <QuestionCard
       question={currentQuestion}
       questionNumber={quizState.currentQuestion + 1}
-      totalQuestions={questions.length}
+      totalQuestions={quizState.shuffledQuestions.length}
       onAnswer={handleAnswer}
       timeLeft={timeLeft}
     />

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, Star, AlertTriangle } from 'lucide-react';
-import { Question } from '../types/Quiz';
+import { ShuffledQuestion } from '../types/Quiz';
 
 interface QuestionCardProps {
-  question: Question;
+  question: ShuffledQuestion;
   questionNumber: number;
   totalQuestions: number;
   onAnswer: (answer: number) => void;
@@ -149,7 +149,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           </h2>
 
           <div className="space-y-3 md:space-y-4">
-            {question.options.map((option, index) => {
+            {question.shuffledOptions.map((option, index) => {
               let buttonClass = "w-full p-3 md:p-4 text-left rounded-xl border-2 transition-all duration-300 font-medium text-sm md:text-base";
               
               if (selectedAnswer === null) {
@@ -160,9 +160,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   buttonClass += " border-gray-200 bg-gray-50 text-gray-600";
                 } else {
                   // Normal feedback when user selected an answer
-                  if (index === question.correctAnswer) {
+                  if (index === question.shuffledCorrectAnswer) {
                     buttonClass += " border-green-500 bg-green-100 text-green-800";
-                  } else if (index === selectedAnswer && index !== question.correctAnswer) {
+                  } else if (index === selectedAnswer && index !== question.shuffledCorrectAnswer) {
                     buttonClass += " border-red-500 bg-red-100 text-red-800";
                   } else {
                     buttonClass += " border-gray-200 bg-gray-50 text-gray-600";
@@ -180,10 +180,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   <div className="flex items-center justify-between">
                     <span className="text-left">{option}</span>
                     {/* Only show icons when not timeout */}
-                    {showFeedback && !isTimeout && index === question.correctAnswer && (
+                    {showFeedback && !isTimeout && index === question.shuffledCorrectAnswer && (
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 ml-2" />
                     )}
-                    {showFeedback && !isTimeout && index === selectedAnswer && index !== question.correctAnswer && (
+                    {showFeedback && !isTimeout && index === selectedAnswer && index !== question.shuffledCorrectAnswer && (
                       <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 ml-2" />
                     )}
                   </div>
