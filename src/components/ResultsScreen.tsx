@@ -3,6 +3,7 @@ import { Trophy, Medal, Star, RotateCcw, CheckCircle, XCircle, Play, Award, Inst
 import { Question } from '../types/Quiz';
 import { GameStats } from '../types/Quiz';
 import { ShareCard } from './ShareCard';
+import { ExplanationDropdown } from './ExplanationDropdown';
 
 interface ResultsScreenProps {
   questions: Question[];
@@ -282,11 +283,12 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                     ))}
                   </div>
 
-                  <div className="bg-blue-50 border-l-4 border-blue-400 p-3 md:p-4 rounded-r mb-3 md:mb-4">
-                    <h4 className="font-semibold text-blue-800 mb-2 text-sm md:text-base">💡 Explicação:</h4>
-                    <p className="text-blue-700 text-xs md:text-sm leading-relaxed">
-                      {question.explanation}
-                    </p>
+                  {/* Mobile-optimized explanation dropdown */}
+                  <div className="mb-3 md:mb-4">
+                    <ExplanationDropdown 
+                      explanation={question.explanation}
+                      questionNumber={index + 1}
+                    />
                   </div>
 
                   {/* Video Section for each question */}
