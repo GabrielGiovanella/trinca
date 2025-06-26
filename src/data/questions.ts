@@ -4,30 +4,30 @@ export const questions: Question[] = [
   // Perguntas Fáceis (4) - 5ª pergunta substituída por jogo da memória
   {
     id: 1,
-    question: "O Oeste representa, na simbologia do Segundo Conselheiro:",
+    question: "A jornada simbólica da iniciação inicia-se no Leste, posto do Mestre Conselheiro. Esse ponto cardeal simboliza:",
     options: [
-      "O início da vida.",
-      "O ápice da juventude.",
-      "O pôr do sol e o fim da vida.",
-      "O nascimento e a infância."
+      "O entardecer da vida.",
+      "A adolescência.",
+      "A manhã da vida, início da jornada.",
+      "A morte e o renascimento."
     ],
-    correctAnswer: 2,
+    correctAnswer: 3,
     difficulty: 'easy',
-    explanation: "Na simbologia da Ordem DeMolay, o Oeste representa o pôr do sol e o fim da vida, simbolizando a conclusão do ciclo vital e a reflexão sobre os ensinamentos recebidos ao longo da jornada.",
+    explanation: "Lorem Ipsum set do tu gloriam",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
     id: 2,
-    question: "O Sul representa, na simbologia do Primeiro Conselheiro:",
+    question: "O Oeste representa, na simbologia do Primeiro Conselheiro",
     options: [
       "A infância despreocupada.",
-      "O repouso eterno.",
+      "O pôr do sol e fim da vida.",
       "O meio-dia da vida e o tempo de reflexão.",
       "A velhice e a decadência."
     ],
     correctAnswer: 2,
     difficulty: 'easy',
-    explanation: "O Sul simboliza o meio-dia da vida e o tempo de reflexão, representando o momento de maior maturidade e sabedoria, quando o indivíduo pode refletir sobre suas experiências e compartilhar seus conhecimentos.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
