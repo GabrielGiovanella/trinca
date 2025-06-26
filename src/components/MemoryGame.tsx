@@ -295,7 +295,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
             <div className="space-y-4">
               <div className="text-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
-                  📝 Frases e Termos
+                  📝 Coluna 1
                 </div>
               </div>
               {leftItems.map((item, index) => (
@@ -323,7 +323,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
             <div className="space-y-4">
               <div className="text-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
-                  🎯 Significados
+                  🎯 Coluna 2
                 </div>
               </div>
               {rightItems.map((item, index) => (
