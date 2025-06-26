@@ -22,6 +22,7 @@ export interface QuizState {
   showResults: boolean;
   playerName: string;
   shuffledQuestions: ShuffledQuestion[];
+  memoryGameScore?: number; // Score from the memory game bonus
 }
 
 export interface GameStats {
@@ -31,4 +32,5 @@ export interface GameStats {
   mediumCorrect: number;
   hardCorrect: number;
   percentage: number;
+  memoryGameScore?: number;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, Award, Users, BookOpen, User, Info, AlertCircle, Clock } from 'lucide-react';
+import { Play, Award, Users, BookOpen, User, Info, AlertCircle, Clock, Brain } from 'lucide-react';
 import { AboutModal } from './AboutModal';
 
 interface StartScreenProps {
@@ -44,7 +44,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </h1>
           </div>
 
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-6 mb-4 md:mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 mb-4 md:mb-8">
             <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
               <BookOpen className="w-4 h-4 md:w-8 md:h-8 text-green-400 mx-auto mb-1 md:mb-3" />
               <div className="text-lg md:text-2xl font-bold text-white mb-0.5">5</div>
@@ -65,24 +65,36 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </div>
             <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
               <Award className="w-4 h-4 md:w-8 md:h-8 text-red-400 mx-auto mb-1 md:mb-3" />
-              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">5</div>
+              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">4</div>
               <div className="text-xs md:text-sm text-blue-200">Perguntas Difíceis</div>
               <div className="flex items-center justify-center gap-1 mt-1">
                 <Clock className="w-3 h-3 text-red-300" />
                 <span className="text-xs text-red-300 font-semibold">45s</span>
               </div>
             </div>
+            <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
+              <Brain className="w-4 h-4 md:w-8 md:h-8 text-purple-400 mx-auto mb-1 md:mb-3" />
+              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">1</div>
+              <div className="text-xs md:text-sm text-blue-200">Jogo da Memória</div>
+              <div className="flex items-center justify-center gap-1 mt-1">
+                <Clock className="w-3 h-3 text-purple-300" />
+                <span className="text-xs text-purple-300 font-semibold">45s</span>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-2 md:space-y-3 mb-4 md:mb-8">
             <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
-              💡 <strong>Como funciona:</strong> Responda às 15 perguntas sobre a Ordem DeMolay, 
+              💡 <strong>Como funciona:</strong> Responda às 14 perguntas sobre a Ordem DeMolay, 
               começando pelas mais fáceis até as mais desafiadoras. Cada nível de dificuldade tem 
-              um tempo diferente para responder. No final, veja seu desempenho 
+              um tempo diferente para responder. Termine com um jogo da memória bônus! No final, veja seu desempenho 
               e aprenda com as explicações detalhadas!
             </div>
             <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-3 md:p-4 border border-orange-300/20">
-              ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s)
+              ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s), Jogo da Memória (45s)
+            </div>
+            <div className="text-xs md:text-sm text-purple-200 bg-purple-500/10 rounded-lg p-3 md:p-4 border border-purple-300/20">
+              🧠 <strong>Bônus:</strong> Conecte frases relacionadas à Ordem DeMolay no jogo da memória final!
             </div>
           </div>
 

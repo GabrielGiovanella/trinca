@@ -136,7 +136,7 @@ export const questions: Question[] = [
     explanation: "A Rosa Branca é a flor oficial da Ordem DeMolay, simbolizando a pureza, a inocência e a nobreza de caráter que se espera dos jovens membros."
   },
 
-  // Perguntas Difíceis (5)
+  // Perguntas Difíceis (4) - Removemos a 15ª pergunta para o jogo da memória
   {
     id: 11,
     question: "Em que cidade e estado americano foi fundada a primeira reunião da Ordem DeMolay?",
@@ -188,18 +188,5 @@ export const questions: Question[] = [
     correctAnswer: 1,
     difficulty: 'hard',
     explanation: "A Ordem DeMolay chegou ao Brasil em 1963, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país."
-  },
-  {
-    id: 15,
-    question: "Qual é o nome da publicação oficial internacional da Ordem DeMolay?",
-    options: [
-      "The DeMolay Magazine",
-      "DeMolay Conclave",
-      "The Cordon",
-      "DeMolay Digest"
-    ],
-    correctAnswer: 2,
-    difficulty: 'hard',
-    explanation: "The Cordon é a publicação oficial internacional da Ordem DeMolay, servindo como meio de comunicação entre os Capítulos ao redor do mundo."
   }
 ];

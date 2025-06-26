@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trophy, Medal, Star, RotateCcw, CheckCircle, XCircle, Play, Award, Instagram, Share2, Camera, ArrowLeft } from 'lucide-react';
+import { Trophy, Medal, Star, RotateCcw, CheckCircle, XCircle, Play, Award, Instagram, Share2, Camera, ArrowLeft, Brain } from 'lucide-react';
 import { Question } from '../types/Quiz';
 import { GameStats } from '../types/Quiz';
 import { ShareCard } from './ShareCard';
@@ -150,14 +150,32 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
             {/* Bottom Stats Row */}
             <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
               <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                <div className="text-2xl md:text-3xl font-bold text-red-400">{stats.hardCorrect}/5</div>
+                <div className="text-2xl md:text-3xl font-bold text-red-400">{stats.hardCorrect}/4</div>
                 <div className="text-xs md:text-sm text-blue-200">Difíceis</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stats.totalQuestions - stats.correctAnswers}</div>
-                <div className="text-xs md:text-sm text-blue-200">Erros</div>
+                <div className="text-2xl md:text-3xl font-bold text-purple-400">{stats.memoryGameScore || 0}/6</div>
+                <div className="text-xs md:text-sm text-blue-200">Jogo da Memória</div>
               </div>
             </div>
+
+            {/* Memory Game Bonus Result */}
+            {stats.memoryGameScore !== undefined && (
+              <div className="bg-purple-500/20 backdrop-blur-sm rounded-xl p-3 md:p-4 mb-4 md:mb-6 border border-purple-300/30">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Brain className="w-5 h-5 md:w-6 md:h-6 text-purple-300" />
+                  <h3 className="text-base md:text-lg font-bold text-purple-200">Bônus - Jogo da Memória</h3>
+                </div>
+                <p className="text-sm md:text-base text-purple-100">
+                  {stats.memoryGameScore === 6 ? 
+                    "🎉 Perfeito! Você conectou todas as frases corretamente!" :
+                    stats.memoryGameScore >= 4 ?
+                    `🧠 Muito bom! Você conectou ${stats.memoryGameScore} de 6 frases.` :
+                    `💪 Continue praticando! Você conectou ${stats.memoryGameScore} de 6 frases.`
+                  }
+                </p>
+              </div>
+            )}
 
             {/* Share Button */}
             <div className="mb-4">
@@ -257,6 +275,17 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                       )}
                     </div>
                   </div>
+
+                  {/* Question Image */}
+                  {question.imageUrl && (
+                    <div className="mb-3 md:mb-4">
+                      <img 
+                        src={question.imageUrl} 
+                        alt="Imagem da pergunta" 
+                        className="w-full max-w-md mx-auto rounded-lg shadow-md border border-gray-200"
+                      />
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 gap-2 md:gap-3 mb-3 md:mb-4">
                     {question.options.map((option, optionIndex) => (

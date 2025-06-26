@@ -11,11 +11,13 @@ export const useQuiz = () => {
     isCompleted: false,
     showResults: false,
     playerName: '',
-    shuffledQuestions: []
+    shuffledQuestions: [],
+    memoryGameScore: 0
   });
 
   const [timeLeft, setTimeLeft] = useState(15); // Start with 15 seconds for first question (easy)
   const [gameStarted, setGameStarted] = useState(false);
+  const [showMemoryGame, setShowMemoryGame] = useState(false);
 
   // Function to get time limit based on difficulty
   const getTimeLimit = (difficulty: string): number => {
@@ -29,7 +31,7 @@ export const useQuiz = () => {
 
   // Timer effect
   useEffect(() => {
-    if (!gameStarted || quizState.isCompleted) return;
+    if (!gameStarted || quizState.isCompleted || showMemoryGame) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -41,7 +43,7 @@ export const useQuiz = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [gameStarted, quizState.currentQuestion, quizState.isCompleted]);
+  }, [gameStarted, quizState.currentQuestion, quizState.isCompleted, showMemoryGame]);
 
   const startGame = (playerName: string) => {
     // Shuffle all questions when starting the game
@@ -77,14 +79,26 @@ export const useQuiz = () => {
       });
       setTimeLeft(nextTimeLimit);
     } else {
+      // After the last question, show memory game
       setQuizState({
         ...quizState,
         score: newScore,
         answers: newAnswers,
-        isCompleted: true,
-        showResults: true
+        isCompleted: false // Keep false to show memory game
       });
+      setShowMemoryGame(true);
+      setTimeLeft(45); // 45 seconds for memory game
     }
+  };
+
+  const handleMemoryGameComplete = (memoryScore: number) => {
+    setQuizState(prev => ({
+      ...prev,
+      memoryGameScore: memoryScore,
+      isCompleted: true,
+      showResults: true
+    }));
+    setShowMemoryGame(false);
   };
 
   const resetQuiz = () => {
@@ -95,9 +109,11 @@ export const useQuiz = () => {
       isCompleted: false,
       showResults: false,
       playerName: '',
-      shuffledQuestions: []
+      shuffledQuestions: [],
+      memoryGameScore: 0
     });
     setGameStarted(false);
+    setShowMemoryGame(false);
     setTimeLeft(15); // Reset to initial time for easy questions
   };
 
@@ -133,7 +149,8 @@ export const useQuiz = () => {
       easyCorrect,
       mediumCorrect,
       hardCorrect,
-      percentage
+      percentage,
+      memoryGameScore: quizState.memoryGameScore
     };
   };
 
@@ -141,9 +158,11 @@ export const useQuiz = () => {
     quizState,
     timeLeft,
     gameStarted,
+    showMemoryGame,
     currentQuestion: quizState.shuffledQuestions[quizState.currentQuestion],
     startGame,
     handleAnswer,
+    handleMemoryGameComplete,
     resetQuiz,
     getGameStats
   };

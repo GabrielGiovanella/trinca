@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Medal, Star, Award, Instagram } from 'lucide-react';
+import { Trophy, Medal, Star, Award, Instagram, Brain } from 'lucide-react';
 import { GameStats } from '../types/Quiz';
 
 interface ShareCardProps {
@@ -108,7 +108,7 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
             </div>
             
             {/* Difficulty Stats */}
-            <div className="border-t border-yellow-300 pt-3">
+            <div className="border-t border-yellow-300 pt-3 mb-3">
               <h4 className="text-yellow-900 text-sm font-bold text-center mb-3">Desempenho por Dificuldade</h4>
               <div className="grid grid-cols-3 gap-2">
                 <div className="text-center bg-green-100/80 rounded-lg py-2 border border-green-200">
@@ -120,11 +120,25 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
                   <div className="text-yellow-600 text-xs font-semibold">Médias</div>
                 </div>
                 <div className="text-center bg-red-100/80 rounded-lg py-2 border border-red-200">
-                  <div className="text-xl font-bold text-red-700">{stats.hardCorrect}/5</div>
+                  <div className="text-xl font-bold text-red-700">{stats.hardCorrect}/4</div>
                   <div className="text-red-600 text-xs font-semibold">Difíceis</div>
                 </div>
               </div>
             </div>
+
+            {/* Memory Game Bonus */}
+            {stats.memoryGameScore !== undefined && (
+              <div className="border-t border-yellow-300 pt-3">
+                <div className="text-center bg-purple-100/80 rounded-lg py-2 border border-purple-200">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <Brain className="w-4 h-4 text-purple-700" />
+                    <span className="text-xs font-bold text-purple-700">BÔNUS</span>
+                  </div>
+                  <div className="text-xl font-bold text-purple-700">{stats.memoryGameScore}/6</div>
+                  <div className="text-purple-600 text-xs font-semibold">Jogo da Memória</div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
