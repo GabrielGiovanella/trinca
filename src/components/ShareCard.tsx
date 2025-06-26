@@ -11,28 +11,28 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
   const getPerformanceData = (percentage: number) => {
     if (percentage >= 90) return { 
       icon: Trophy,
-      title: "PERFORMANCE EXCEPCIONAL!",
+      title: "EXCEPCIONAL!",
       emoji: "🏆",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
     };
     if (percentage >= 70) return { 
       icon: Medal,
-      title: "ÓTIMA PERFORMANCE!",
+      title: "ÓTIMA!",
       emoji: "🥇",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
     };
     if (percentage >= 50) return { 
       icon: Star,
-      title: "BOA PERFORMANCE!",
+      title: "BOA!",
       emoji: "⭐",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
     };
     return { 
       icon: Award,
-      title: "CONTINUE ESTUDANDO!",
+      title: "CONTINUE!",
       emoji: "📚",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
@@ -45,79 +45,70 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
   return (
     <div 
       id="share-card"
-      className="w-[320px] h-[550px] bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 relative overflow-hidden shadow-2xl flex flex-col rounded-2xl"
+      className="w-[350px] h-[400px] bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 relative overflow-hidden shadow-2xl flex flex-col rounded-2xl"
       style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
     >
       {/* Minimal Background Pattern */}
       <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-4 left-4 w-8 h-8 border border-yellow-200 rounded-full"></div>
-        <div className="absolute top-16 right-3 w-6 h-6 border border-yellow-200 rounded-full"></div>
-        <div className="absolute bottom-20 right-4 w-10 h-10 border border-yellow-200 rounded-full"></div>
-        <div className="absolute bottom-8 left-3 w-7 h-7 border border-yellow-200 rounded-full"></div>
+        <div className="absolute top-4 left-4 w-6 h-6 border border-yellow-200 rounded-full"></div>
+        <div className="absolute top-12 right-3 w-4 h-4 border border-yellow-200 rounded-full"></div>
+        <div className="absolute bottom-16 right-4 w-8 h-8 border border-yellow-200 rounded-full"></div>
+        <div className="absolute bottom-8 left-3 w-5 h-5 border border-yellow-200 rounded-full"></div>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col p-3">
+      <div className="flex-1 flex flex-col p-4">
         {/* Compact Header */}
-        <div className="relative z-10 text-center pt-3 pb-2">
-          <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${performance.color} rounded-full mb-2 shadow-lg border border-yellow-200`}>
-            <IconComponent className="w-6 h-6 text-yellow-900" />
+        <div className="relative z-10 text-center pt-2 pb-3">
+          <div className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${performance.color} rounded-full mb-2 shadow-lg border border-yellow-200`}>
+            <IconComponent className="w-5 h-5 text-yellow-900" />
           </div>
-          <h1 className="text-yellow-900 text-lg font-bold mb-1 drop-shadow-sm">Desafio da Trinca</h1>
+          <h1 className="text-yellow-900 text-base font-bold mb-1 drop-shadow-sm">Desafio da Trinca</h1>
           <p className="text-yellow-800 text-sm font-semibold">Ordem DeMolay</p>
         </div>
 
         {/* Compact Player Name */}
-        <div className="relative z-10 text-center mb-2">
-          <h2 className="text-yellow-900 text-base font-bold mb-1">Parabéns,</h2>
-          <h3 className="text-yellow-900 text-base font-bold bg-yellow-200/60 backdrop-blur-sm rounded-full px-3 py-1 mx-3 border border-yellow-300">
+        <div className="relative z-10 text-center mb-3">
+          <h2 className="text-yellow-900 text-sm font-bold mb-1">Parabéns,</h2>
+          <h3 className="text-yellow-900 text-sm font-bold bg-yellow-200/60 backdrop-blur-sm rounded-full px-3 py-1 mx-4 border border-yellow-300">
             {playerName}!
           </h3>
         </div>
 
         {/* Compact Performance Title */}
         <div className="relative z-10 text-center mb-3">
-          <div className="bg-yellow-200/60 backdrop-blur-sm rounded-lg mx-3 py-2 border border-yellow-300">
-            <p className="text-yellow-900 text-sm font-bold">
+          <div className="bg-yellow-200/60 backdrop-blur-sm rounded-lg mx-4 py-1.5 border border-yellow-300">
+            <p className="text-yellow-900 text-xs font-bold">
               {performance.emoji} {performance.title}
             </p>
           </div>
         </div>
 
-        {/* Compact Main Stats */}
+        {/* Main Stats in 3 Columns - Single Row */}
         <div className="relative z-10 flex-1 flex flex-col justify-center">
           <div className="bg-yellow-200/60 backdrop-blur-sm rounded-lg p-3 border border-yellow-300">
-            {/* Primary Stats - Compact */}
-            <div className="grid grid-cols-2 gap-2 mb-3">
+            {/* Primary Stats - 3 Columns in One Row */}
+            <div className="grid grid-cols-3 gap-2 mb-3">
               <div className="text-center">
-                <div className="text-xl font-bold text-yellow-900">{stats.totalEarnedPoints}</div>
-                <div className="text-yellow-800 text-xs font-semibold">Pontos Totais</div>
+                <div className="text-lg font-bold text-yellow-900">{stats.totalEarnedPoints}</div>
+                <div className="text-yellow-800 text-xs font-semibold">Pontos</div>
                 <div className="text-yellow-700 text-xs">de {stats.totalPossiblePoints}</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold text-yellow-900">{stats.percentage.toFixed(0)}%</div>
-                <div className="text-yellow-800 text-xs font-semibold">Aproveitamento</div>
-                <div className="text-yellow-700 text-xs">Geral</div>
+                <div className="text-lg font-bold text-yellow-900">{stats.percentage.toFixed(0)}%</div>
+                <div className="text-yellow-800 text-xs font-semibold">Geral</div>
+                <div className="text-yellow-700 text-xs">Aproveit.</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-purple-700">{stats.totalMemoryScore}/18</div>
+                <div className="text-yellow-800 text-xs font-semibold">Memória</div>
+                <div className="text-yellow-700 text-xs">{stats.memoryPercentage.toFixed(0)}%</div>
               </div>
             </div>
             
-            {/* Breakdown Stats - Very Compact */}
+            {/* Questions Stats - 3 Columns in One Row */}
             <div className="border-t border-yellow-300 pt-2 mb-2">
-              <h4 className="text-yellow-900 text-xs font-bold text-center mb-2">Desempenho Detalhado</h4>
-              <div className="grid grid-cols-2 gap-2 mb-2">
-                <div className="text-center bg-blue-100/80 rounded-lg py-1 border border-blue-200">
-                  <div className="text-base font-bold text-blue-700">{stats.correctAnswers}/12</div>
-                  <div className="text-blue-600 text-xs font-semibold">Perguntas</div>
-                  <div className="text-blue-500 text-xs">{stats.questionsPercentage.toFixed(0)}%</div>
-                </div>
-                <div className="text-center bg-purple-100/80 rounded-lg py-1 border border-purple-200">
-                  <div className="text-base font-bold text-purple-700">{stats.totalMemoryScore}/18</div>
-                  <div className="text-purple-600 text-xs font-semibold">Memória</div>
-                  <div className="text-purple-500 text-xs">{stats.memoryPercentage.toFixed(0)}%</div>
-                </div>
-              </div>
-              
-              {/* Difficulty Stats - Very Compact */}
+              <h4 className="text-yellow-900 text-xs font-bold text-center mb-2">Perguntas por Dificuldade</h4>
               <div className="grid grid-cols-3 gap-1">
                 <div className="text-center bg-green-100/80 rounded-lg py-1 border border-green-200">
                   <div className="text-sm font-bold text-green-700">{stats.easyCorrect}/4</div>
@@ -134,20 +125,21 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
               </div>
             </div>
 
-            {/* Memory Games Individual Scores - Very Compact */}
+            {/* Memory Games Individual Scores - 3 Columns in One Row */}
             <div className="border-t border-yellow-300 pt-2">
+              <h4 className="text-yellow-900 text-xs font-bold text-center mb-2">Jogos da Memória</h4>
               <div className="grid grid-cols-3 gap-1">
                 <div className="text-center bg-indigo-100/80 rounded-lg py-1 border border-indigo-200">
-                  <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[0] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">J1</div>
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[0] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 1</div>
                 </div>
                 <div className="text-center bg-indigo-100/80 rounded-lg py-1 border border-indigo-200">
-                  <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[1] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">J2</div>
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[1] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 2</div>
                 </div>
                 <div className="text-center bg-indigo-100/80 rounded-lg py-1 border border-indigo-200">
-                  <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[2] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">J3</div>
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[2] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 3</div>
                 </div>
               </div>
             </div>
@@ -156,12 +148,12 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
       </div>
 
       {/* Compact Instagram Footer */}
-      <div className="relative z-10 bg-gradient-to-r from-pink-600 to-purple-700 p-2.5 text-center rounded-b-2xl">
+      <div className="relative z-10 bg-gradient-to-r from-pink-600 to-purple-700 p-2 text-center rounded-b-2xl">
         <div className="flex justify-center mb-1">
           <Instagram className="w-4 h-4 text-white" />
         </div>
         <p className="text-white text-xs font-bold mb-1">
-          Compartilhe nos Stories e marque:
+          Marque nos Stories:
         </p>
         <div className="flex justify-center gap-1 flex-wrap">
           <span className="bg-white text-pink-600 px-2 py-0.5 rounded-full text-xs font-bold">

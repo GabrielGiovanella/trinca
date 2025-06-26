@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Trophy, Medal, Star, RotateCcw, Play, Award, Instagram, Share2, Camera, ArrowLeft, Brain, ChevronDown, ChevronUp } from 'lucide-react';
 import { Question, ShuffledQuestion } from '../types/Quiz';
 import { GameStats } from '../types/Quiz';
@@ -24,6 +24,11 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
 }) => {
   const [showShareScreen, setShowShareScreen] = useState(false);
   const [showQuestionsReview, setShowQuestionsReview] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getPerformanceMessage = (percentage: number, name: string) => {
     if (percentage >= 90) return { 
@@ -170,49 +175,49 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
               </div>
             </div>
 
-            {/* Memory Games Detailed Results - Redesigned */}
-            <div className="bg-gradient-to-r from-indigo-600/30 to-purple-600/30 backdrop-blur-sm rounded-2xl p-4 md:p-6 mb-4 md:mb-6 border border-indigo-400/30 shadow-lg">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full p-2.5 shadow-lg">
-                  <Brain className="w-6 h-6 text-white" />
+            {/* Memory Games Detailed Results - Compact 3 Columns */}
+            <div className="bg-gradient-to-r from-indigo-600/30 to-purple-600/30 backdrop-blur-sm rounded-2xl p-3 md:p-4 mb-4 md:mb-6 border border-indigo-400/30 shadow-lg">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full p-1.5 shadow-lg">
+                  <Brain className="w-4 h-4 text-white" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-white">🧠 Bônus - Jogos da Memória</h3>
+                <h3 className="text-sm md:text-lg font-bold text-white">🧠 Bônus - Jogos da Memória</h3>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
+              <div className="grid grid-cols-3 gap-2 mb-3">
+                <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[0] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 1</div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
+                    <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[0] || 0}/6</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 1</div>
+                    <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
-                        className="bg-gradient-to-r from-green-400 to-emerald-500 h-2 rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-green-400 to-emerald-500 h-1.5 rounded-full transition-all duration-500"
                         style={{ width: `${((stats.memoryGameScores[0] || 0) / 6) * 100}%` }}
                       ></div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
+                <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[1] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 2</div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
+                    <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[1] || 0}/6</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 2</div>
+                    <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
-                        className="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-yellow-400 to-orange-500 h-1.5 rounded-full transition-all duration-500"
                         style={{ width: `${((stats.memoryGameScores[1] || 0) / 6) * 100}%` }}
                       ></div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
+                <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[2] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 3</div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
+                    <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[2] || 0}/6</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 3</div>
+                    <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
-                        className="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-purple-400 to-pink-500 h-1.5 rounded-full transition-all duration-500"
                         style={{ width: `${((stats.memoryGameScores[2] || 0) / 6) * 100}%` }}
                       ></div>
                     </div>
@@ -220,19 +225,19 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 </div>
               </div>
               
-              <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Trophy className="w-5 h-5 text-yellow-400" />
-                  <span className="text-lg font-bold text-white">
-                    Total: {stats.totalMemoryScore}/18 conexões ({stats.memoryPercentage.toFixed(0)}%)
+              <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20">
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <Trophy className="w-4 h-4 text-yellow-400" />
+                  <span className="text-sm font-bold text-white">
+                    Total: {stats.totalMemoryScore}/18 ({stats.memoryPercentage.toFixed(0)}%)
                   </span>
                 </div>
-                <p className="text-sm text-blue-100">
+                <p className="text-xs text-blue-100">
                   {stats.totalMemoryScore >= 15 ? 
-                    "🎉 Excelente memória! Você domina os conceitos da Ordem!" :
+                    "🎉 Excelente memória! Você domina os conceitos!" :
                     stats.totalMemoryScore >= 10 ?
-                    `🧠 Boa memória! Você conectou ${stats.totalMemoryScore} de 18 conceitos.` :
-                    `💪 Continue praticando! Você conectou ${stats.totalMemoryScore} de 18 conceitos.`
+                    `🧠 Boa memória! ${stats.totalMemoryScore} de 18 conceitos.` :
+                    `💪 Continue praticando! ${stats.totalMemoryScore} de 18 conceitos.`
                   }
                 </p>
               </div>
