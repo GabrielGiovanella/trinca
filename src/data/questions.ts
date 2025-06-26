@@ -32,14 +32,14 @@ export const questions: Question[] = [
   },
   {
     id: 3,
-    question: "Segundo a explicação sobre a joia do Patriotismo, qual é a forma de demonstrá-lo em tempos de paz?",
+    question: "O que significa três batidas de malhete realizadas pelo Mestre Conselheiro?",
     options: [
-      "Estudar as guerras do passado.",
-      "Viver como um cidadão honrado.",
-      "Evitar qualquer atividade política.",
-      "Ingressar nas Forças Armadas."
+      "Atenção de todos os presentes.",
+      "Todos se sentam.",
+      "Apenas os oficiais se levantam.",
+      "Todos se levantam."
     ],
-    correctAnswer: 1,
+    correctAnswer: 4,
     difficulty: 'easy',
     explanation: "O Patriotismo em tempos de paz é demonstrado vivendo como um cidadão honrado, cumprindo seus deveres cívicos, respeitando as leis e contribuindo positivamente para o desenvolvimento da sociedade e do país.",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
