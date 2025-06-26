@@ -11,14 +11,14 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
   const getPerformanceData = (percentage: number) => {
     if (percentage >= 90) return { 
       icon: Trophy,
-      title: "EXCEPCIONAL!",
+      title: "EXCEPCIONAL! O PRÓPRIO FSL!",
       emoji: "🏆",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
     };
     if (percentage >= 70) return { 
       icon: Medal,
-      title: "ÓTIMA!",
+      title: "ÓTIMA! TÁ DE HACK?!",
       emoji: "🥇",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
