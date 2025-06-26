@@ -35,7 +35,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
       message: `Excelente, ${name}! Você é um verdadeiro conhecedor da Ordem DeMolay! Seu conhecimento é impressionante e demonstra grande dedicação aos estudos da Ordem.`, 
       color: "text-green-600", 
       icon: Trophy,
-      title: "🏆 PERFORMANCE EXCEPCIONAL!"
+      title: "🏆 PERFORMANCE EXCEPCIONAL! O PRÓPRIO FSL!"
     };
     if (percentage >= 70) return { 
       message: `Muito bom, ${name}! Você tem um sólido conhecimento sobre a Ordem DeMolay. Continue assim e logo será um expert no assunto!`, 
