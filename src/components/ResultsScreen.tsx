@@ -41,7 +41,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
       message: `Muito bom, ${name}! Você tem um sólido conhecimento sobre a Ordem DeMolay. Continue assim e logo será um expert no assunto!`, 
       color: "text-blue-600", 
       icon: Medal,
-      title: "🥇 ÓTIMA PERFORMANCE!"
+      title: "🥇 ÓTIMA PERFORMANCE! TÁ DE HACK?!"
     };
     if (percentage >= 50) return { 
       message: `Bom trabalho, ${name}! Você está no caminho certo. Continue estudando para aprimorar ainda mais seus conhecimentos sobre a Ordem DeMolay.`, 
