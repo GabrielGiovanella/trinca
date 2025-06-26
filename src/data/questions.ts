@@ -164,14 +164,14 @@ export const questions: Question[] = [
     id: 14,
     question: "Em que ano a Ordem DeMolay chegou ao Brasil?",
     options: [
-      "1962",
-      "1963",
-      "1964",
-      "1965"
+      "1979",
+      "1980",
+      "1981",
+      "1982"
     ],
     correctAnswer: 1,
     difficulty: 'hard',
-    explanation: "A Ordem DeMolay chegou ao Brasil em 1963, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país.",
+    explanation: "A Ordem DeMolay chegou ao Brasil em 1980, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país.",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   }
 ];
