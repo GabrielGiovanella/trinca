@@ -175,7 +175,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[0] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">Simbologia dos Pontos Cardeais</div>
+                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 1</div>
                     <div className="w-full bg-white/20 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-green-400 to-emerald-500 h-2 rounded-full transition-all duration-500"
@@ -188,7 +188,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[1] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">Virtudes e Símbolos</div>
+                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 2</div>
                     <div className="w-full bg-white/20 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full transition-all duration-500"
@@ -201,7 +201,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stats.memoryGameScores[2] || 0}/6</div>
-                    <div className="text-sm font-semibold text-blue-200 mb-2">História da Ordem</div>
+                    <div className="text-sm font-semibold text-blue-200 mb-2">Jogo 3</div>
                     <div className="w-full bg-white/20 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full transition-all duration-500"
