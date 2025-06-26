@@ -167,7 +167,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
     return baseClass + " border-gray-200 hover:border-blue-400 hover:bg-blue-50 bg-white";
   };
 
-  const timePercentage = (timeLeft / 45) * 100; // 45 seconds for hard difficulty
+  const timePercentage = (timeLeft / 60) * 100; // 60 seconds (1 minute) for memory game
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
@@ -200,9 +200,9 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
             <span className="text-blue-200 text-sm font-medium">
               🧠 Jogo da Memória - Bônus
             </span>
-            <div className={`flex items-center gap-2 ${timeLeft <= 5 ? 'text-red-300 animate-pulse' : timeLeft <= 10 ? 'text-orange-300' : 'text-blue-200'}`}>
+            <div className={`flex items-center gap-2 ${timeLeft <= 10 ? 'text-red-300 animate-pulse' : timeLeft <= 20 ? 'text-orange-300' : 'text-blue-200'}`}>
               <Clock className="w-4 h-4" />
-              <span className="text-sm font-bold">{timeLeft}s</span>
+              <span className="text-sm font-bold">{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
             </div>
           </div>
           <div className="w-full bg-white/20 rounded-full h-2 mb-2">
@@ -231,7 +231,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
               <span className="text-gray-700 font-semibold">Desafio da Trinca - Bônus</span>
             </div>
             <div className="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
-              Jogo da Memória (45s)
+              Jogo da Memória (1min)
             </div>
           </div>
 

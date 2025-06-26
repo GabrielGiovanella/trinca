@@ -44,41 +44,41 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </h1>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 mb-4 md:mb-8">
-            <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
-              <BookOpen className="w-4 h-4 md:w-8 md:h-8 text-green-400 mx-auto mb-1 md:mb-3" />
-              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">5</div>
-              <div className="text-xs md:text-sm text-blue-200">Perguntas Fáceis</div>
-              <div className="flex items-center justify-center gap-1 mt-1">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-8 max-w-lg mx-auto">
+            <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
+              <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-green-400 mx-auto mb-2" />
+              <div className="text-lg md:text-xl font-bold text-white mb-1">5</div>
+              <div className="text-xs md:text-sm text-blue-200 mb-1">Perguntas Fáceis</div>
+              <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-green-300" />
                 <span className="text-xs text-green-300 font-semibold">15s</span>
               </div>
             </div>
-            <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
-              <Users className="w-4 h-4 md:w-8 md:h-8 text-yellow-400 mx-auto mb-1 md:mb-3" />
-              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">5</div>
-              <div className="text-xs md:text-sm text-blue-200">Perguntas Médias</div>
-              <div className="flex items-center justify-center gap-1 mt-1">
+            <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
+              <Users className="w-5 h-5 md:w-6 md:h-6 text-yellow-400 mx-auto mb-2" />
+              <div className="text-lg md:text-xl font-bold text-white mb-1">5</div>
+              <div className="text-xs md:text-sm text-blue-200 mb-1">Perguntas Médias</div>
+              <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-yellow-300" />
                 <span className="text-xs text-yellow-300 font-semibold">30s</span>
               </div>
             </div>
-            <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
-              <Award className="w-4 h-4 md:w-8 md:h-8 text-red-400 mx-auto mb-1 md:mb-3" />
-              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">4</div>
-              <div className="text-xs md:text-sm text-blue-200">Perguntas Difíceis</div>
-              <div className="flex items-center justify-center gap-1 mt-1">
+            <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
+              <Award className="w-5 h-5 md:w-6 md:h-6 text-red-400 mx-auto mb-2" />
+              <div className="text-lg md:text-xl font-bold text-white mb-1">4</div>
+              <div className="text-xs md:text-sm text-blue-200 mb-1">Perguntas Difíceis</div>
+              <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-red-300" />
                 <span className="text-xs text-red-300 font-semibold">45s</span>
               </div>
             </div>
-            <div className="bg-white/5 rounded-lg p-2 md:p-6 border border-white/10">
-              <Brain className="w-4 h-4 md:w-8 md:h-8 text-purple-400 mx-auto mb-1 md:mb-3" />
-              <div className="text-lg md:text-2xl font-bold text-white mb-0.5">1</div>
-              <div className="text-xs md:text-sm text-blue-200">Jogo da Memória</div>
-              <div className="flex items-center justify-center gap-1 mt-1">
+            <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
+              <Brain className="w-5 h-5 md:w-6 md:h-6 text-purple-400 mx-auto mb-2" />
+              <div className="text-lg md:text-xl font-bold text-white mb-1">1</div>
+              <div className="text-xs md:text-sm text-blue-200 mb-1">Jogo da Memória</div>
+              <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-purple-300" />
-                <span className="text-xs text-purple-300 font-semibold">45s</span>
+                <span className="text-xs text-purple-300 font-semibold">1min</span>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
               e aprenda com as explicações detalhadas!
             </div>
             <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-3 md:p-4 border border-orange-300/20">
-              ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s), Jogo da Memória (45s)
+              ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s), Jogo da Memória (1min)
             </div>
           </div>
 

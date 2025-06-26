@@ -31,7 +31,7 @@ export const useQuiz = () => {
 
   // Timer effect
   useEffect(() => {
-    if (!gameStarted || quizState.isCompleted || showMemoryGame) return;
+    if (!gameStarted || quizState.isCompleted) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -87,7 +87,7 @@ export const useQuiz = () => {
         isCompleted: false // Keep false to show memory game
       });
       setShowMemoryGame(true);
-      setTimeLeft(45); // 45 seconds for memory game
+      setTimeLeft(60); // 60 seconds (1 minute) for memory game
     }
   };
 
