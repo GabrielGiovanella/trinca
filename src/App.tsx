@@ -43,6 +43,7 @@ function App() {
         stats={getGameStats()}
         playerName={quizState.playerName}
         onRestart={resetQuiz}
+        shuffledQuestions={quizState.shuffledQuestions}
       />
     );
   }

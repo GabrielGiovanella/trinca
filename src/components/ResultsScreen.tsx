@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Trophy, Medal, Star, RotateCcw, Play, Award, Instagram, Share2, Camera, ArrowLeft, Brain, ChevronDown, ChevronUp } from 'lucide-react';
-import { Question } from '../types/Quiz';
+import { Question, ShuffledQuestion } from '../types/Quiz';
 import { GameStats } from '../types/Quiz';
 import { ShareCard } from './ShareCard';
 import { QuestionDropdown } from './QuestionDropdown';
@@ -11,6 +11,7 @@ interface ResultsScreenProps {
   stats: GameStats;
   playerName: string;
   onRestart: () => void;
+  shuffledQuestions: ShuffledQuestion[]; // Add shuffled questions prop
 }
 
 export const ResultsScreen: React.FC<ResultsScreenProps> = ({
@@ -18,7 +19,8 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   userAnswers,
   stats,
   playerName,
-  onRestart
+  onRestart,
+  shuffledQuestions
 }) => {
   const [showShareScreen, setShowShareScreen] = useState(false);
   const [showQuestionsReview, setShowQuestionsReview] = useState(false);
@@ -252,7 +254,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
             <div className="flex items-center gap-2 md:gap-3">
               <Star className="w-4 h-4 md:w-6 md:h-6 text-yellow-500" />
               <h2 className="text-lg md:text-2xl font-bold text-gray-800">
-                Revisão das Perguntas ({questions.length} perguntas)
+                Revisão das Perguntas ({shuffledQuestions.length} perguntas)
               </h2>
             </div>
             <div className="flex items-center gap-2">
@@ -272,9 +274,9 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
           } overflow-hidden`}>
             <div className="border-t border-gray-200 pt-4 md:pt-6">
               <div className="space-y-4">
-                {questions.map((question, index) => {
+                {shuffledQuestions.map((question, index) => {
                   const userAnswer = userAnswers[index];
-                  const isCorrect = userAnswer === question.correctAnswer;
+                  const isCorrect = userAnswer === question.shuffledCorrectAnswer;
                   const wasTimeout = userAnswer === -1;
                   
                   return (

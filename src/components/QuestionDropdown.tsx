@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, CheckCircle, XCircle, Play, Lightbulb } from 'lucide-react';
-import { Question } from '../types/Quiz';
+import { ShuffledQuestion } from '../types/Quiz';
 import { ExplanationDropdown } from './ExplanationDropdown';
 
 interface QuestionDropdownProps {
-  question: Question;
+  question: ShuffledQuestion; // Changed from Question to ShuffledQuestion
   questionIndex: number;
   userAnswer: number;
   isCorrect: boolean;
@@ -88,14 +88,14 @@ export const QuestionDropdown: React.FC<QuestionDropdownProps> = ({
       } overflow-hidden`}>
         <div className="border-t border-gray-200 bg-gray-50/50">
           <div className="p-4 md:p-5 space-y-4">
-            {/* Answer Options */}
+            {/* Answer Options - Now using shuffled options */}
             <div className="space-y-2">
               <h4 className="text-sm font-semibold text-gray-700 mb-3">Opções de resposta:</h4>
-              {question.options.map((option, optionIndex) => (
+              {question.shuffledOptions.map((option, optionIndex) => (
                 <div
                   key={optionIndex}
                   className={`p-3 rounded-lg border text-sm ${
-                    optionIndex === question.correctAnswer 
+                    optionIndex === question.shuffledCorrectAnswer 
                       ? 'bg-green-50 border-green-200 text-green-800'
                       : optionIndex === userAnswer && !isCorrect && !wasTimeout
                       ? 'bg-red-50 border-red-200 text-red-800'
@@ -104,7 +104,7 @@ export const QuestionDropdown: React.FC<QuestionDropdownProps> = ({
                 >
                   <div className="flex items-center justify-between">
                     <span className="leading-tight">{option}</span>
-                    {optionIndex === question.correctAnswer && (
+                    {optionIndex === question.shuffledCorrectAnswer && (
                       <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 ml-2" />
                     )}
                     {optionIndex === userAnswer && !isCorrect && !wasTimeout && (
