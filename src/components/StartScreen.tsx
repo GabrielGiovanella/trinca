@@ -87,9 +87,6 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
               💡 <strong>Como funciona:</strong> Teste seus conhecimentos sobre a Ordem DeMolay respondendo a 12 perguntas em ordem crescente de dificuldade, com 3 jogos da memória intercalados como bônus. Confira seu desempenho com explicações detalhadas!
             </div>
-            <div className="text-xs md:text-sm text-purple-200 bg-purple-500/10 rounded-lg p-3 md:p-4 border border-purple-300/20">
-              🧠 <strong>Jogos da Memória:</strong> Após as perguntas fáceis, médias e difíceis, você jogará mini-jogos de memória temáticos para ganhar pontos bônus!
-            </div>
           </div>
 
           {/* Nome do Jogador */}
