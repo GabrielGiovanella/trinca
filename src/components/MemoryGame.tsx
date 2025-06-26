@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Clock, Star, RotateCcw, Trophy } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Star, RotateCcw, Trophy, Brain, Zap } from 'lucide-react';
 
 interface MemoryPair {
   id: number;
@@ -146,39 +146,39 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
   };
 
   const getItemClass = (index: number, isRight: boolean = false) => {
-    const baseClass = "p-3 md:p-4 text-center rounded-xl border-2 transition-all duration-300 font-medium text-sm md:text-base cursor-pointer";
+    const baseClass = "group relative p-4 md:p-5 text-center rounded-2xl border-2 transition-all duration-300 font-medium text-sm md:text-base cursor-pointer transform hover:scale-105 shadow-lg hover:shadow-xl";
     const itemId = isRight ? index + 100 : index;
     const wrongKey = isRight ? 
       Array.from(wrongMatches).find(key => key.endsWith(`-${index}`)) :
       Array.from(wrongMatches).find(key => key.startsWith(`${index}-`));
 
     if (matches.has(itemId)) {
-      return baseClass + " border-green-500 bg-green-100 text-green-800 cursor-not-allowed";
+      return baseClass + " border-green-400 bg-gradient-to-br from-green-50 to-green-100 text-green-800 cursor-not-allowed shadow-green-200";
     }
     
     if (wrongKey) {
-      return baseClass + " border-red-500 bg-red-100 text-red-800 animate-pulse";
+      return baseClass + " border-red-400 bg-gradient-to-br from-red-50 to-red-100 text-red-800 animate-pulse shadow-red-200";
     }
     
     if ((isRight && selectedRight === index) || (!isRight && selectedLeft === index)) {
-      return baseClass + " border-blue-500 bg-blue-100 text-blue-800";
+      return baseClass + " border-blue-400 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-800 shadow-blue-200 scale-105";
     }
     
-    return baseClass + " border-gray-200 hover:border-blue-400 hover:bg-blue-50 bg-white";
+    return baseClass + " border-gray-200 hover:border-purple-400 hover:bg-gradient-to-br hover:from-purple-50 hover:to-blue-50 bg-gradient-to-br from-white to-gray-50 text-gray-700 hover:text-purple-700";
   };
 
   const timePercentage = (timeLeft / 60) * 100; // 60 seconds (1 minute) for memory game
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+      <div className="max-w-6xl w-full">
         {/* Timeout Message */}
         {timeLeft === 0 && !gameCompleted && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-orange-500 text-white p-6 rounded-2xl shadow-2xl max-w-sm w-full text-center">
-              <Clock className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">⏰ Tempo Esgotado!</h3>
-              <p className="text-orange-100">Você conseguiu {score} conexões corretas!</p>
+            <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-orange-300">
+              <Clock className="w-16 h-16 mx-auto mb-4 animate-pulse" />
+              <h3 className="text-2xl font-bold mb-3">⏰ Tempo Esgotado!</h3>
+              <p className="text-orange-100 text-lg">Você conseguiu {score} conexões corretas!</p>
             </div>
           </div>
         )}
@@ -186,75 +186,106 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
         {/* Completion Message */}
         {gameCompleted && score === memoryPairs.length && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-green-500 text-white p-6 rounded-2xl shadow-2xl max-w-sm w-full text-center">
-              <Trophy className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">🎉 Parabéns!</h3>
-              <p className="text-green-100">Você conectou todas as frases corretamente!</p>
+            <div className="bg-gradient-to-br from-green-500 to-emerald-500 text-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-green-300">
+              <Trophy className="w-16 h-16 mx-auto mb-4 animate-bounce" />
+              <h3 className="text-2xl font-bold mb-3">🎉 Perfeito!</h3>
+              <p className="text-green-100 text-lg">Você conectou todas as frases corretamente!</p>
             </div>
           </div>
         )}
 
-        {/* Progress Bar */}
+        {/* Enhanced Progress Section */}
         <div className="mb-8">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-blue-200 text-sm font-medium">
-              🧠 Jogo da Memória - Bônus
-            </span>
-            <div className={`flex items-center gap-2 ${timeLeft <= 10 ? 'text-red-300 animate-pulse' : timeLeft <= 20 ? 'text-orange-300' : 'text-blue-200'}`}>
-              <Clock className="w-4 h-4" />
-              <span className="text-sm font-bold">{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center gap-3">
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full p-2">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-white text-lg font-bold">🧠 Jogo da Memória - Bônus</span>
+              </div>
+              <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${
+                timeLeft <= 10 ? 'bg-red-500/20 text-red-300 animate-pulse' : 
+                timeLeft <= 20 ? 'bg-orange-500/20 text-orange-300' : 
+                'bg-blue-500/20 text-blue-200'
+              }`}>
+                <Clock className="w-5 h-5" />
+                <span className="text-lg font-bold">{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
+              </div>
             </div>
-          </div>
-          <div className="w-full bg-white/20 rounded-full h-2 mb-2">
-            <div 
-              className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(score / memoryPairs.length) * 100}%` }}
-            ></div>
-          </div>
-          {/* Time Progress Bar */}
-          <div className="w-full bg-white/10 rounded-full h-1">
-            <div 
-              className={`h-1 rounded-full transition-all duration-1000 ${
-                timePercentage > 50 ? 'bg-green-400' : 
-                timePercentage > 25 ? 'bg-yellow-400' : 'bg-red-400'
-              }`}
-              style={{ width: `${timePercentage}%` }}
-            ></div>
+            
+            {/* Score Progress */}
+            <div className="mb-4">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-blue-200 font-medium">Progresso das Conexões</span>
+                <span className="text-white font-bold">{score}/{memoryPairs.length}</span>
+              </div>
+              <div className="w-full bg-white/20 rounded-full h-3">
+                <div 
+                  className="bg-gradient-to-r from-green-400 to-emerald-500 h-3 rounded-full transition-all duration-500 shadow-lg"
+                  style={{ width: `${(score / memoryPairs.length) * 100}%` }}
+                ></div>
+              </div>
+            </div>
+            
+            {/* Time Progress Bar */}
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-blue-200 font-medium">Tempo Restante</span>
+                <span className={`font-bold ${timeLeft <= 10 ? 'text-red-300' : timeLeft <= 20 ? 'text-orange-300' : 'text-blue-200'}`}>
+                  {timeLeft}s
+                </span>
+              </div>
+              <div className="w-full bg-white/20 rounded-full h-2">
+                <div 
+                  className={`h-2 rounded-full transition-all duration-1000 shadow-lg ${
+                    timePercentage > 50 ? 'bg-gradient-to-r from-green-400 to-green-500' : 
+                    timePercentage > 25 ? 'bg-gradient-to-r from-yellow-400 to-orange-400' : 
+                    'bg-gradient-to-r from-red-400 to-red-500'
+                  }`}
+                  style={{ width: `${timePercentage}%` }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Game Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <Star className="w-6 h-6 text-yellow-500" />
-              <span className="text-gray-700 font-semibold">Desafio da Trinca - Bônus</span>
+        {/* Enhanced Game Card */}
+        <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-10 border border-white/30">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-3">
+                <Star className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Desafio da Trinca</h1>
             </div>
-            <div className="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
-              Jogo da Memória (1min)
+            
+            <h2 className="text-xl md:text-2xl font-bold text-gray-700 mb-4">
+              🧠 Conecte as frases relacionadas à Ordem DeMolay
+            </h2>
+            
+            <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-2xl p-4 mb-6 border border-purple-200">
+              <p className="text-gray-700 font-medium mb-2">
+                Clique em uma frase da esquerda e depois em sua correspondente da direita
+              </p>
+              <div className="flex items-center justify-center gap-2">
+                <Zap className="w-5 h-5 text-purple-600" />
+                <span className="text-purple-700 font-bold text-lg">
+                  Conexões: {score}/{memoryPairs.length}
+                </span>
+              </div>
             </div>
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 leading-relaxed text-center">
-            🧠 Conecte as frases relacionadas à Ordem DeMolay
-          </h2>
-
-          <div className="mb-4 text-center">
-            <p className="text-gray-600 text-sm md:text-base">
-              Clique em uma frase da esquerda e depois em sua correspondente da direita
-            </p>
-            <p className="text-blue-600 font-semibold text-sm">
-              Conexões corretas: {score}/{memoryPairs.length}
-            </p>
-          </div>
-
-          {/* Memory Game Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Enhanced Memory Game Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Left Column */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-gray-700 text-center mb-4">
-                📝 Frases e Termos
-              </h3>
+            <div className="space-y-4">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                  📝 Frases e Termos
+                </div>
+              </div>
               {leftItems.map((item, index) => (
                 <button
                   key={`left-${index}`}
@@ -263,20 +294,26 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
                   disabled={matches.has(index) || gameCompleted}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-left flex-1">{item}</span>
+                    <span className="text-left flex-1 leading-relaxed">{item}</span>
                     {matches.has(index) && (
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 ml-2" />
+                      <div className="flex-shrink-0 ml-3">
+                        <CheckCircle className="w-6 h-6 text-green-600 animate-pulse" />
+                      </div>
                     )}
                   </div>
+                  {/* Hover effect indicator */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400/0 to-blue-400/0 group-hover:from-purple-400/10 group-hover:to-blue-400/10 rounded-2xl transition-all duration-300"></div>
                 </button>
               ))}
             </div>
 
             {/* Right Column */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-gray-700 text-center mb-4">
-                🎯 Significados
-              </h3>
+            <div className="space-y-4">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                  🎯 Significados
+                </div>
+              </div>
               {rightItems.map((item, index) => (
                 <button
                   key={`right-${index}`}
@@ -285,29 +322,58 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
                   disabled={matches.has(index + 100) || gameCompleted}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-left flex-1">{item}</span>
+                    <span className="text-left flex-1 leading-relaxed">{item}</span>
                     {matches.has(index + 100) && (
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 ml-2" />
+                      <div className="flex-shrink-0 ml-3">
+                        <CheckCircle className="w-6 h-6 text-green-600 animate-pulse" />
+                      </div>
                     )}
                   </div>
+                  {/* Hover effect indicator */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 to-teal-400/0 group-hover:from-green-400/10 group-hover:to-teal-400/10 rounded-2xl transition-all duration-300"></div>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Instructions */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div className="flex items-center gap-2 text-blue-800 mb-2">
-              <Star className="w-5 h-5" />
-              <span className="font-semibold">Como jogar:</span>
+          {/* Enhanced Instructions */}
+          <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-2xl p-6 shadow-inner">
+            <div className="flex items-center gap-3 text-blue-800 mb-4">
+              <div className="bg-blue-500 rounded-full p-2">
+                <Star className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-bold text-lg">Como jogar:</span>
             </div>
-            <ul className="text-blue-700 text-sm space-y-1">
-              <li>• Clique em uma frase da coluna esquerda</li>
-              <li>• Em seguida, clique em sua correspondente da direita</li>
-              <li>• Conexões corretas ficam verdes</li>
-              <li>• Conexões erradas ficam vermelhas temporariamente</li>
-              <li>• Conecte todas as frases antes do tempo acabar!</li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="text-blue-700 space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Clique em uma frase da coluna esquerda</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Em seguida, clique em sua correspondente da direita</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Conexões corretas ficam verdes</span>
+                </li>
+              </ul>
+              <ul className="text-blue-700 space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <span>Conexões erradas ficam vermelhas temporariamente</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <span>Conecte todas as frases antes do tempo acabar!</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <span>Ganhe pontos bônus para sua pontuação final!</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

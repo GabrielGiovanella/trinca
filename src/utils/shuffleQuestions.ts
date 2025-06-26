@@ -31,7 +31,21 @@ export const shuffleQuestionOptions = (question: Question): ShuffledQuestion => 
   };
 };
 
-// Shuffle all questions' options
+// Shuffle questions by difficulty to maintain balance but randomize order within each difficulty
 export const shuffleAllQuestions = (questions: Question[]): ShuffledQuestion[] => {
-  return questions.map(question => shuffleQuestionOptions(question));
+  // Separate questions by difficulty
+  const easyQuestions = questions.filter(q => q.difficulty === 'easy');
+  const mediumQuestions = questions.filter(q => q.difficulty === 'medium');
+  const hardQuestions = questions.filter(q => q.difficulty === 'hard');
+  
+  // Shuffle each difficulty group
+  const shuffledEasy = shuffleArray(easyQuestions);
+  const shuffledMedium = shuffleArray(mediumQuestions);
+  const shuffledHard = shuffleArray(hardQuestions);
+  
+  // Combine in order: easy, medium, hard (but each group is shuffled)
+  const orderedQuestions = [...shuffledEasy, ...shuffledMedium, ...shuffledHard];
+  
+  // Shuffle options for each question
+  return orderedQuestions.map(question => shuffleQuestionOptions(question));
 };
