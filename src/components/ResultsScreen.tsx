@@ -188,7 +188,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[0] || 0}/6</div>
-                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 1</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Bônus 1</div>
                     <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
                         className="bg-gradient-to-r from-green-400 to-emerald-500 h-1.5 rounded-full transition-all duration-500"
@@ -201,7 +201,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[1] || 0}/6</div>
-                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 2</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Bônus 2</div>
                     <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
                         className="bg-gradient-to-r from-yellow-400 to-orange-500 h-1.5 rounded-full transition-all duration-500"
@@ -214,7 +214,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="bg-white/15 backdrop-blur-sm rounded-lg p-2 border border-white/20 shadow-md">
                   <div className="text-center">
                     <div className="text-lg md:text-xl font-bold text-white mb-1">{stats.memoryGameScores[2] || 0}/6</div>
-                    <div className="text-xs font-semibold text-blue-200 mb-1">Jogo 3</div>
+                    <div className="text-xs font-semibold text-blue-200 mb-1">Bônus 3</div>
                     <div className="w-full bg-white/20 rounded-full h-1.5">
                       <div 
                         className="bg-gradient-to-r from-purple-400 to-pink-500 h-1.5 rounded-full transition-all duration-500"
