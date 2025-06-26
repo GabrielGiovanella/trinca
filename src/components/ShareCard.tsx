@@ -112,11 +112,11 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
               <h4 className="text-yellow-900 text-sm font-bold text-center mb-3">Desempenho por Dificuldade</h4>
               <div className="grid grid-cols-3 gap-2">
                 <div className="text-center bg-green-100/80 rounded-lg py-2 border border-green-200">
-                  <div className="text-xl font-bold text-green-700">{stats.easyCorrect}/5</div>
+                  <div className="text-xl font-bold text-green-700">{stats.easyCorrect}/4</div>
                   <div className="text-green-600 text-xs font-semibold">Fáceis</div>
                 </div>
                 <div className="text-center bg-yellow-100/80 rounded-lg py-2 border border-yellow-300">
-                  <div className="text-xl font-bold text-yellow-700">{stats.mediumCorrect}/5</div>
+                  <div className="text-xl font-bold text-yellow-700">{stats.mediumCorrect}/4</div>
                   <div className="text-yellow-600 text-xs font-semibold">Médias</div>
                 </div>
                 <div className="text-center bg-red-100/80 rounded-lg py-2 border border-red-200">
@@ -126,19 +126,17 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
               </div>
             </div>
 
-            {/* Memory Game Bonus */}
-            {stats.memoryGameScore !== undefined && (
-              <div className="border-t border-yellow-300 pt-3">
-                <div className="text-center bg-purple-100/80 rounded-lg py-2 border border-purple-200">
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <Brain className="w-4 h-4 text-purple-700" />
-                    <span className="text-xs font-bold text-purple-700">BÔNUS</span>
-                  </div>
-                  <div className="text-xl font-bold text-purple-700">{stats.memoryGameScore}/6</div>
-                  <div className="text-purple-600 text-xs font-semibold">Jogo da Memória</div>
+            {/* Memory Games Bonus */}
+            <div className="border-t border-yellow-300 pt-3">
+              <div className="text-center bg-purple-100/80 rounded-lg py-2 border border-purple-200">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <Brain className="w-4 h-4 text-purple-700" />
+                  <span className="text-xs font-bold text-purple-700">BÔNUS MEMÓRIA</span>
                 </div>
+                <div className="text-xl font-bold text-purple-700">{stats.totalMemoryScore}/18</div>
+                <div className="text-purple-600 text-xs font-semibold">3 Jogos da Memória</div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

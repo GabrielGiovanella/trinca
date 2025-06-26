@@ -47,7 +47,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
           <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-8 max-w-lg mx-auto">
             <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
               <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-green-400 mx-auto mb-2" />
-              <div className="text-lg md:text-xl font-bold text-white mb-1">5</div>
+              <div className="text-lg md:text-xl font-bold text-white mb-1">4</div>
               <div className="text-xs md:text-sm text-blue-200 mb-1">Perguntas Fáceis</div>
               <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-green-300" />
@@ -56,7 +56,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </div>
             <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
               <Users className="w-5 h-5 md:w-6 md:h-6 text-yellow-400 mx-auto mb-2" />
-              <div className="text-lg md:text-xl font-bold text-white mb-1">5</div>
+              <div className="text-lg md:text-xl font-bold text-white mb-1">4</div>
               <div className="text-xs md:text-sm text-blue-200 mb-1">Perguntas Médias</div>
               <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-yellow-300" />
@@ -74,8 +74,8 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             </div>
             <div className="bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
               <Brain className="w-5 h-5 md:w-6 md:h-6 text-purple-400 mx-auto mb-2" />
-              <div className="text-lg md:text-xl font-bold text-white mb-1">1</div>
-              <div className="text-xs md:text-sm text-blue-200 mb-1">Jogo da Memória</div>
+              <div className="text-lg md:text-xl font-bold text-white mb-1">3</div>
+              <div className="text-xs md:text-sm text-blue-200 mb-1">Jogos da Memória</div>
               <div className="flex items-center justify-center gap-1">
                 <Clock className="w-3 h-3 text-purple-300" />
                 <span className="text-xs text-purple-300 font-semibold">1min</span>
@@ -85,7 +85,10 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
 
           <div className="space-y-2 md:space-y-3 mb-4 md:mb-8">
             <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
-              💡 <strong>Como funciona:</strong> Teste seus conhecimentos sobre a Ordem DeMolay respondendo a 14 perguntas em ordem crescente de dificuldade, com tempos variados por fase. No final, jogue um bônus de memória e confira seu desempenho com explicações detalhadas!
+              💡 <strong>Como funciona:</strong> Teste seus conhecimentos sobre a Ordem DeMolay respondendo a 12 perguntas em ordem crescente de dificuldade, com 3 jogos da memória intercalados como bônus. Confira seu desempenho com explicações detalhadas!
+            </div>
+            <div className="text-xs md:text-sm text-purple-200 bg-purple-500/10 rounded-lg p-3 md:p-4 border border-purple-300/20">
+              🧠 <strong>Jogos da Memória:</strong> Após as perguntas fáceis, médias e difíceis, você jogará mini-jogos de memória temáticos para ganhar pontos bônus!
             </div>
           </div>
 

@@ -137,11 +137,11 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
               {/* Difficulty Stats Row */}
               <div className="grid grid-cols-2 gap-3 md:contents">
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-green-400">{stats.easyCorrect}/5</div>
+                  <div className="text-2xl md:text-3xl font-bold text-green-400">{stats.easyCorrect}/4</div>
                   <div className="text-xs md:text-sm text-blue-200">Fáceis</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-yellow-400">{stats.mediumCorrect}/5</div>
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-400">{stats.mediumCorrect}/4</div>
                   <div className="text-xs md:text-sm text-blue-200">Médias</div>
                 </div>
               </div>
@@ -154,28 +154,40 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="text-xs md:text-sm text-blue-200">Difíceis</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                <div className="text-2xl md:text-3xl font-bold text-purple-400">{stats.memoryGameScore || 0}/6</div>
-                <div className="text-xs md:text-sm text-blue-200">Jogo da Memória</div>
+                <div className="text-2xl md:text-3xl font-bold text-purple-400">{stats.totalMemoryScore}/18</div>
+                <div className="text-xs md:text-sm text-blue-200">Jogos da Memória</div>
               </div>
             </div>
 
-            {/* Memory Game Bonus Result */}
-            {stats.memoryGameScore !== undefined && (
-              <div className="bg-purple-500/20 backdrop-blur-sm rounded-xl p-3 md:p-4 mb-4 md:mb-6 border border-purple-300/30">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Brain className="w-5 h-5 md:w-6 md:h-6 text-purple-300" />
-                  <h3 className="text-base md:text-lg font-bold text-purple-200">Bônus - Jogo da Memória</h3>
-                </div>
-                <p className="text-sm md:text-base text-purple-100">
-                  {stats.memoryGameScore === 6 ? 
-                    "🎉 Perfeito! Você conectou todas as frases corretamente!" :
-                    stats.memoryGameScore >= 4 ?
-                    `🧠 Muito bom! Você conectou ${stats.memoryGameScore} de 6 frases.` :
-                    `💪 Continue praticando! Você conectou ${stats.memoryGameScore} de 6 frases.`
-                  }
-                </p>
+            {/* Memory Games Detailed Results */}
+            <div className="bg-purple-500/20 backdrop-blur-sm rounded-xl p-3 md:p-4 mb-4 md:mb-6 border border-purple-300/30">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Brain className="w-5 h-5 md:w-6 md:h-6 text-purple-300" />
+                <h3 className="text-base md:text-lg font-bold text-purple-200">Bônus - Jogos da Memória</h3>
               </div>
-            )}
+              <div className="grid grid-cols-3 gap-2 md:gap-3 mb-3">
+                <div className="text-center bg-purple-400/20 rounded-lg p-2 border border-purple-400/30">
+                  <div className="text-lg md:text-xl font-bold text-purple-200">{stats.memoryGameScores[0] || 0}/6</div>
+                  <div className="text-xs text-purple-300">Simbologia</div>
+                </div>
+                <div className="text-center bg-purple-400/20 rounded-lg p-2 border border-purple-400/30">
+                  <div className="text-lg md:text-xl font-bold text-purple-200">{stats.memoryGameScores[1] || 0}/6</div>
+                  <div className="text-xs text-purple-300">Virtudes</div>
+                </div>
+                <div className="text-center bg-purple-400/20 rounded-lg p-2 border border-purple-400/30">
+                  <div className="text-lg md:text-xl font-bold text-purple-200">{stats.memoryGameScores[2] || 0}/6</div>
+                  <div className="text-xs text-purple-300">História</div>
+                </div>
+              </div>
+              <p className="text-sm md:text-base text-purple-100 text-center">
+                {stats.totalMemoryScore >= 15 ? 
+                  "🎉 Excelente memória! Você domina os conceitos da Ordem!" :
+                  stats.totalMemoryScore >= 10 ?
+                  `🧠 Boa memória! Você conectou ${stats.totalMemoryScore} de 18 conceitos.` :
+                  `💪 Continue praticando! Você conectou ${stats.totalMemoryScore} de 18 conceitos.`
+                }
+              </p>
+            </div>
 
             {/* Share Button */}
             <div className="mb-4">

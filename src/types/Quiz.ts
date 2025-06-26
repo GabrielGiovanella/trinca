@@ -9,6 +9,12 @@ export interface Question {
   imageUrl?: string;
 }
 
+export interface MemoryPair {
+  id: number;
+  left: string;
+  right: string;
+}
+
 export interface ShuffledQuestion extends Question {
   shuffledOptions: string[];
   shuffledCorrectAnswer: number;
@@ -22,7 +28,7 @@ export interface QuizState {
   showResults: boolean;
   playerName: string;
   shuffledQuestions: ShuffledQuestion[];
-  memoryGameScore?: number; // Score from the memory game bonus
+  memoryGameScores: number[]; // Array to store scores from multiple memory games
 }
 
 export interface GameStats {
@@ -32,5 +38,6 @@ export interface GameStats {
   mediumCorrect: number;
   hardCorrect: number;
   percentage: number;
-  memoryGameScore?: number;
+  memoryGameScores: number[];
+  totalMemoryScore: number;
 }

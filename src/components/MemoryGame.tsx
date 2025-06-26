@@ -1,51 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, Star, RotateCcw, Trophy, Brain, Zap } from 'lucide-react';
-
-interface MemoryPair {
-  id: number;
-  left: string;
-  right: string;
-}
+import { MemoryPair } from '../types/Quiz';
+import { memoryGame1, memoryGame2, memoryGame3 } from '../data/memoryGames';
 
 interface MemoryGameProps {
   onComplete: (score: number) => void;
   timeLeft: number;
+  gameNumber: number; // 1, 2, or 3
 }
 
-const memoryPairs: MemoryPair[] = [
-  {
-    id: 1,
-    left: "Fidelitas et Veritas",
-    right: "Lema da Ordem DeMolay"
-  },
-  {
-    id: 2,
-    left: "Frank S. Land",
-    right: "Fundador da Ordem DeMolay"
-  },
-  {
-    id: 3,
-    left: "Kansas City, Missouri",
-    right: "Local de fundação da Ordem"
-  },
-  {
-    id: 4,
-    left: "Rosa Branca",
-    right: "Flor oficial da Ordem DeMolay"
-  },
-  {
-    id: 5,
-    left: "Amor Filial",
-    right: "Virtude do amor aos pais"
-  },
-  {
-    id: 6,
-    left: "1919",
-    right: "Ano de fundação da Ordem"
-  }
-];
-
-export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) => {
+export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, gameNumber }) => {
   const [leftItems, setLeftItems] = useState<string[]>([]);
   const [rightItems, setRightItems] = useState<string[]>([]);
   const [selectedLeft, setSelectedLeft] = useState<number | null>(null);
@@ -55,9 +19,31 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
   const [score, setScore] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [memoryPairs, setMemoryPairs] = useState<MemoryPair[]>([]);
+
+  // Get the appropriate memory game data
+  useEffect(() => {
+    let pairs: MemoryPair[] = [];
+    switch (gameNumber) {
+      case 1:
+        pairs = memoryGame1;
+        break;
+      case 2:
+        pairs = memoryGame2;
+        break;
+      case 3:
+        pairs = memoryGame3;
+        break;
+      default:
+        pairs = memoryGame1;
+    }
+    setMemoryPairs(pairs);
+  }, [gameNumber]);
 
   // Initialize shuffled items
   useEffect(() => {
+    if (memoryPairs.length === 0) return;
+
     const shuffleArray = <T,>(array: T[]): T[] => {
       const shuffled = [...array];
       for (let i = shuffled.length - 1; i > 0; i--) {
@@ -69,7 +55,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
 
     setLeftItems(shuffleArray(memoryPairs.map(pair => pair.left)));
     setRightItems(shuffleArray(memoryPairs.map(pair => pair.right)));
-  }, []);
+  }, [memoryPairs]);
 
   // Handle timeout
   useEffect(() => {
@@ -169,6 +155,32 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
 
   const timePercentage = (timeLeft / 60) * 100; // 60 seconds (1 minute) for memory game
 
+  const getGameTitle = () => {
+    switch (gameNumber) {
+      case 1:
+        return "🧠 Jogo da Memória - Simbologia dos Pontos Cardeais";
+      case 2:
+        return "🧠 Jogo da Memória - Virtudes e Símbolos";
+      case 3:
+        return "🧠 Jogo da Memória - História da Ordem";
+      default:
+        return "🧠 Jogo da Memória - Bônus";
+    }
+  };
+
+  const getGameDescription = () => {
+    switch (gameNumber) {
+      case 1:
+        return "Conecte os pontos cardeais com seus significados simbólicos na Ordem DeMolay";
+      case 2:
+        return "Conecte as virtudes e símbolos com suas definições na Ordem DeMolay";
+      case 3:
+        return "Conecte os fatos históricos com suas informações sobre a Ordem DeMolay";
+      default:
+        return "Conecte as frases relacionadas à Ordem DeMolay";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
       <div className="max-w-6xl w-full">
@@ -202,7 +214,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
                 <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full p-2">
                   <Brain className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-white text-lg font-bold">🧠 Jogo da Memória - Bônus</span>
+                <span className="text-white text-lg font-bold">{getGameTitle()}</span>
               </div>
               <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${
                 timeLeft <= 10 ? 'bg-red-500/20 text-red-300 animate-pulse' : 
@@ -261,7 +273,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft }) 
             </div>
             
             <h2 className="text-xl md:text-2xl font-bold text-gray-700 mb-4">
-              🧠 Conecte as frases relacionadas à Ordem DeMolay
+              {getGameDescription()}
             </h2>
             
             <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-2xl p-4 mb-6 border border-purple-200">

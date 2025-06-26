@@ -12,12 +12,13 @@ export const useQuiz = () => {
     showResults: false,
     playerName: '',
     shuffledQuestions: [],
-    memoryGameScore: 0
+    memoryGameScores: []
   });
 
   const [timeLeft, setTimeLeft] = useState(15); // Start with 15 seconds for first question (easy)
   const [gameStarted, setGameStarted] = useState(false);
   const [showMemoryGame, setShowMemoryGame] = useState(false);
+  const [currentMemoryGame, setCurrentMemoryGame] = useState(0); // Track which memory game to show
 
   // Function to get time limit based on difficulty
   const getTimeLimit = (difficulty: string): number => {
@@ -66,39 +67,78 @@ export const useQuiz = () => {
     const isCorrect = answer === currentShuffledQuestion.shuffledCorrectAnswer;
     const newScore = isCorrect ? quizState.score + 1 : quizState.score;
 
-    if (quizState.currentQuestion < quizState.shuffledQuestions.length - 1) {
+    // Check if we need to show a memory game
+    const shouldShowMemoryGame = () => {
       const nextQuestionIndex = quizState.currentQuestion + 1;
-      const nextQuestionDifficulty = quizState.shuffledQuestions[nextQuestionIndex].difficulty;
-      const nextTimeLimit = getTimeLimit(nextQuestionDifficulty);
-      
-      setQuizState({
-        ...quizState,
-        currentQuestion: nextQuestionIndex,
-        score: newScore,
-        answers: newAnswers
-      });
-      setTimeLeft(nextTimeLimit);
+      // Show memory game after 4th question (easy) and 8th question (medium)
+      return nextQuestionIndex === 4 || nextQuestionIndex === 8;
+    };
+
+    if (quizState.currentQuestion < quizState.shuffledQuestions.length - 1) {
+      if (shouldShowMemoryGame()) {
+        // Show memory game
+        setQuizState({
+          ...quizState,
+          score: newScore,
+          answers: newAnswers
+        });
+        setCurrentMemoryGame(quizState.currentQuestion === 3 ? 1 : 2); // Memory game 1 after easy, 2 after medium
+        setShowMemoryGame(true);
+        setTimeLeft(60); // 60 seconds for memory game
+      } else {
+        // Continue to next question
+        const nextQuestionIndex = quizState.currentQuestion + 1;
+        const nextQuestionDifficulty = quizState.shuffledQuestions[nextQuestionIndex].difficulty;
+        const nextTimeLimit = getTimeLimit(nextQuestionDifficulty);
+        
+        setQuizState({
+          ...quizState,
+          currentQuestion: nextQuestionIndex,
+          score: newScore,
+          answers: newAnswers
+        });
+        setTimeLeft(nextTimeLimit);
+      }
     } else {
-      // After the last question, show memory game
+      // After the last question, show final memory game
       setQuizState({
         ...quizState,
         score: newScore,
         answers: newAnswers,
         isCompleted: false // Keep false to show memory game
       });
+      setCurrentMemoryGame(3); // Final memory game
       setShowMemoryGame(true);
-      setTimeLeft(60); // 60 seconds (1 minute) for memory game
+      setTimeLeft(60); // 60 seconds for memory game
     }
   };
 
   const handleMemoryGameComplete = (memoryScore: number) => {
-    setQuizState(prev => ({
-      ...prev,
-      memoryGameScore: memoryScore,
-      isCompleted: true,
-      showResults: true
-    }));
-    setShowMemoryGame(false);
+    const newMemoryScores = [...quizState.memoryGameScores, memoryScore];
+    
+    if (currentMemoryGame === 3) {
+      // Final memory game completed, show results
+      setQuizState(prev => ({
+        ...prev,
+        memoryGameScores: newMemoryScores,
+        isCompleted: true,
+        showResults: true
+      }));
+      setShowMemoryGame(false);
+    } else {
+      // Continue to next question after memory game
+      const nextQuestionIndex = quizState.currentQuestion + 1;
+      const nextQuestionDifficulty = quizState.shuffledQuestions[nextQuestionIndex].difficulty;
+      const nextTimeLimit = getTimeLimit(nextQuestionDifficulty);
+      
+      setQuizState(prev => ({
+        ...prev,
+        currentQuestion: nextQuestionIndex,
+        memoryGameScores: newMemoryScores
+      }));
+      setShowMemoryGame(false);
+      setTimeLeft(nextTimeLimit);
+    }
   };
 
   const resetQuiz = () => {
@@ -110,10 +150,11 @@ export const useQuiz = () => {
       showResults: false,
       playerName: '',
       shuffledQuestions: [],
-      memoryGameScore: 0
+      memoryGameScores: []
     });
     setGameStarted(false);
     setShowMemoryGame(false);
+    setCurrentMemoryGame(0);
     setTimeLeft(15); // Reset to initial time for easy questions
   };
 
@@ -142,6 +183,7 @@ export const useQuiz = () => {
     });
 
     const percentage = (correctAnswers / totalQuestions) * 100;
+    const totalMemoryScore = quizState.memoryGameScores.reduce((sum, score) => sum + score, 0);
 
     return {
       totalQuestions,
@@ -150,7 +192,8 @@ export const useQuiz = () => {
       mediumCorrect,
       hardCorrect,
       percentage,
-      memoryGameScore: quizState.memoryGameScore
+      memoryGameScores: quizState.memoryGameScores,
+      totalMemoryScore
     };
   };
 
@@ -159,6 +202,7 @@ export const useQuiz = () => {
     timeLeft,
     gameStarted,
     showMemoryGame,
+    currentMemoryGame,
     currentQuestion: quizState.shuffledQuestions[quizState.currentQuestion],
     startGame,
     handleAnswer,

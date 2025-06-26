@@ -1,7 +1,7 @@
 import { Question } from '../types/Quiz';
 
 export const questions: Question[] = [
-  // Perguntas Fáceis (5) - Questões Reais sobre Simbologia DeMolay
+  // Perguntas Fáceis (4) - 5ª pergunta substituída por jogo da memória
   {
     id: 1,
     question: "O Oeste representa, na simbologia do Segundo Conselheiro:",
@@ -58,22 +58,8 @@ export const questions: Question[] = [
     explanation: "A Ordem DeMolay preza pelo bem-estar e conforto de seus candidatos. Se um candidato manifestar desconforto com o uso da venda, deve ser permitido que ele participe da cerimônia sem ela, garantindo que a experiência seja positiva e respeitosa.",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
-  {
-    id: 5,
-    question: "A jornada simbólica inicia-se no Leste. Esse ponto cardeal simboliza:",
-    options: [
-      "O entardecer da vida.",
-      "A adolescência.",
-      "A manhã da vida, início da jornada.",
-      "A morte e o renascimento."
-    ],
-    correctAnswer: 2,
-    difficulty: 'easy',
-    explanation: "O Leste simboliza a manhã da vida e o início da jornada, representando o nascimento, os primeiros passos na vida e o começo da busca pelo conhecimento e desenvolvimento pessoal na Ordem DeMolay.",
-    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
-  },
 
-  // Perguntas Médias (5)
+  // Perguntas Médias (4) - 5ª pergunta substituída por jogo da memória
   {
     id: 6,
     question: "Qual é o lema da Ordem DeMolay?",
@@ -130,22 +116,8 @@ export const questions: Question[] = [
     explanation: "Os maçons que supervisionam um Capítulo DeMolay são chamados de Conselheiros, sendo responsáveis pela orientação e supervisão das atividades dos jovens.",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
-  {
-    id: 10,
-    question: "Qual é a flor oficial da Ordem DeMolay?",
-    options: [
-      "Rosa Vermelha",
-      "Rosa Branca",
-      "Lírio",
-      "Cravo"
-    ],
-    correctAnswer: 1,
-    difficulty: 'medium',
-    explanation: "A Rosa Branca é a flor oficial da Ordem DeMolay, simbolizando a pureza, a inocência e a nobreza de caráter que se espera dos jovens membros.",
-    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
-  },
 
-  // Perguntas Difíceis (4) - Removemos a 15ª pergunta para o jogo da memória
+  // Perguntas Difíceis (4)
   {
     id: 11,
     question: "Em que cidade e estado americano foi fundada a primeira reunião da Ordem DeMolay?",

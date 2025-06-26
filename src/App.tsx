@@ -12,6 +12,7 @@ function App() {
     timeLeft,
     gameStarted,
     showMemoryGame,
+    currentMemoryGame,
     currentQuestion,
     startGame,
     handleAnswer,
@@ -29,6 +30,7 @@ function App() {
       <MemoryGame
         onComplete={handleMemoryGameComplete}
         timeLeft={timeLeft}
+        gameNumber={currentMemoryGame}
       />
     );
   }
