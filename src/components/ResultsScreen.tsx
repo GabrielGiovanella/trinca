@@ -293,27 +293,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
           </div>
         </div>
 
-        {/* General Video Section */}
-        <div className="bg-white rounded-2xl shadow-xl p-3 md:p-8 mb-6 md:mb-8">
-          <h2 className="text-lg md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
-            <Play className="w-4 h-4 md:w-6 md:h-6 text-red-500" />
-            Aprofunde seus Conhecimentos
-          </h2>
-          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-            <iframe
-              className="absolute top-0 left-0 w-full h-full rounded-lg"
-              src="https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
-              title="Ordem DeMolay - Conhecendo a História"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <p className="text-gray-600 mt-3 md:mt-4 text-center text-sm md:text-base">
-            Assista a este vídeo para aprender mais sobre a história e os valores da Ordem DeMolay
-          </p>
-        </div>
-
         {/* Restart Button */}
         <div className="text-center pb-4">
           <button
