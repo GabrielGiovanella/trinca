@@ -38,33 +38,38 @@ export const memoryGame1: MemoryPair[] = [
 export const memoryGame2: MemoryPair[] = [
   {
     id: 1,
-    left: "Rosa Branca",
-    right: "Flor oficial da Ordem DeMolay"
+    left: "1º Preceptor",
+    right: "Amor Filial"
   },
   {
     id: 2,
-    left: "Amor Filial",
-    right: "Virtude do amor e respeito aos pais"
+    left: "2º Preceptor",
+    right: "Reverência pelas Coisas Sagradas"
   },
   {
     id: 3,
-    left: "Conselheiros",
-    right: "Maçons que supervisionam o Capítulo"
+    left: "3º Preceptor",
+    right: "Cortesia"
   },
   {
     id: 4,
-    left: "9 jovens",
-    right: "Número de fundadores originais"
+    left: "4º Preceptor",
+    right: "Companheirismo"
   },
   {
     id: 5,
-    left: "Fidelitas et Veritas",
-    right: "Lema da Ordem DeMolay"
+    left: "5º Preceptor",
+    right: "Fidelidade"
   },
   {
     id: 6,
-    left: "Reverência",
-    right: "Virtude do respeito sagrado"
+    left: "6º Preceptor",
+    right: "Pureza"
+  }
+   {
+    id: 7,
+    left: "7º Preceptor",
+    right: "Patriotismo"
   }
 ];
 
