@@ -93,9 +93,6 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
             <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-3 md:p-4 border border-orange-300/20">
               ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s), Jogo da Memória (45s)
             </div>
-            <div className="text-xs md:text-sm text-purple-200 bg-purple-500/10 rounded-lg p-3 md:p-4 border border-purple-300/20">
-              🧠 <strong>Bônus:</strong> Conecte frases relacionadas à Ordem DeMolay no jogo da memória final!
-            </div>
           </div>
 
           {/* Nome do Jogador */}
