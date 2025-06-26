@@ -148,17 +148,6 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             {question.question}
           </h2>
 
-          {/* Question Image */}
-          {question.imageUrl && (
-            <div className="mb-6 md:mb-8">
-              <img 
-                src={question.imageUrl} 
-                alt="Imagem da pergunta" 
-                className="w-full max-w-md mx-auto rounded-lg shadow-md border border-gray-200"
-              />
-            </div>
-          )}
-
           <div className="space-y-3 md:space-y-4">
             {question.shuffledOptions.map((option, index) => {
               let buttonClass = "w-full p-3 md:p-4 text-left rounded-xl border-2 transition-all duration-300 font-medium text-sm md:text-base";

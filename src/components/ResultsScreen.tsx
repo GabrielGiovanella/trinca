@@ -276,17 +276,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                     </div>
                   </div>
 
-                  {/* Question Image */}
-                  {question.imageUrl && (
-                    <div className="mb-3 md:mb-4">
-                      <img 
-                        src={question.imageUrl} 
-                        alt="Imagem da pergunta" 
-                        className="w-full max-w-md mx-auto rounded-lg shadow-md border border-gray-200"
-                      />
-                    </div>
-                  )}
-
                   <div className="grid grid-cols-1 gap-2 md:gap-3 mb-3 md:mb-4">
                     {question.options.map((option, optionIndex) => (
                       <div
