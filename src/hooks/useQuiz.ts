@@ -182,8 +182,14 @@ export const useQuiz = () => {
       }
     });
 
-    const percentage = (correctAnswers / totalQuestions) * 100;
+    // Calculate memory games total score
     const totalMemoryScore = quizState.memoryGameScores.reduce((sum, score) => sum + score, 0);
+    const maxMemoryScore = 18; // 3 games × 6 pairs each
+    
+    // Calculate combined statistics including memory games
+    const totalPossiblePoints = totalQuestions + maxMemoryScore; // 12 questions + 18 memory pairs
+    const totalEarnedPoints = correctAnswers + totalMemoryScore;
+    const combinedPercentage = (totalEarnedPoints / totalPossiblePoints) * 100;
 
     return {
       totalQuestions,
@@ -191,9 +197,14 @@ export const useQuiz = () => {
       easyCorrect,
       mediumCorrect,
       hardCorrect,
-      percentage,
+      percentage: combinedPercentage, // Now includes memory games
       memoryGameScores: quizState.memoryGameScores,
-      totalMemoryScore
+      totalMemoryScore,
+      // New combined stats
+      totalPossiblePoints,
+      totalEarnedPoints,
+      questionsPercentage: (correctAnswers / totalQuestions) * 100, // Questions only percentage
+      memoryPercentage: (totalMemoryScore / maxMemoryScore) * 100 // Memory games only percentage
     };
   };
 

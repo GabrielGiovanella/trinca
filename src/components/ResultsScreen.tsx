@@ -123,42 +123,50 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
               {performance.message}
             </p>
             
-            {/* Score Statistics - Mobile Optimized */}
+            {/* Enhanced Score Statistics - Now includes memory games */}
             <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-4 md:gap-4 mb-4 md:mb-6">
-              {/* Primary Stats Row */}
+              {/* Primary Combined Stats Row */}
               <div className="grid grid-cols-2 gap-3 md:contents">
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-white">{stats.correctAnswers}</div>
-                  <div className="text-xs md:text-sm text-blue-200">Acertos</div>
+                  <div className="text-2xl md:text-3xl font-bold text-white">{stats.totalEarnedPoints}</div>
+                  <div className="text-xs md:text-sm text-blue-200">Pontos Totais</div>
+                  <div className="text-xs text-blue-300">de {stats.totalPossiblePoints}</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
                   <div className="text-2xl md:text-3xl font-bold text-white">{stats.percentage.toFixed(0)}%</div>
                   <div className="text-xs md:text-sm text-blue-200">Aproveitamento</div>
+                  <div className="text-xs text-blue-300">Geral</div>
                 </div>
               </div>
               
-              {/* Difficulty Stats Row */}
+              {/* Questions Stats Row */}
               <div className="grid grid-cols-2 gap-3 md:contents">
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-green-400">{stats.easyCorrect}/4</div>
-                  <div className="text-xs md:text-sm text-blue-200">Fáceis</div>
+                  <div className="text-2xl md:text-3xl font-bold text-blue-300">{stats.correctAnswers}/12</div>
+                  <div className="text-xs md:text-sm text-blue-200">Perguntas</div>
+                  <div className="text-xs text-blue-300">{stats.questionsPercentage.toFixed(0)}%</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-yellow-400">{stats.mediumCorrect}/4</div>
-                  <div className="text-xs md:text-sm text-blue-200">Médias</div>
+                  <div className="text-2xl md:text-3xl font-bold text-purple-300">{stats.totalMemoryScore}/18</div>
+                  <div className="text-xs md:text-sm text-blue-200">Memória</div>
+                  <div className="text-xs text-blue-300">{stats.memoryPercentage.toFixed(0)}%</div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Stats Row */}
-            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+            {/* Difficulty Breakdown */}
+            <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+              <div className="bg-white/10 rounded-lg p-3 md:p-4">
+                <div className="text-2xl md:text-3xl font-bold text-green-400">{stats.easyCorrect}/4</div>
+                <div className="text-xs md:text-sm text-blue-200">Fáceis</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 md:p-4">
+                <div className="text-2xl md:text-3xl font-bold text-yellow-400">{stats.mediumCorrect}/4</div>
+                <div className="text-xs md:text-sm text-blue-200">Médias</div>
+              </div>
               <div className="bg-white/10 rounded-lg p-3 md:p-4">
                 <div className="text-2xl md:text-3xl font-bold text-red-400">{stats.hardCorrect}/4</div>
                 <div className="text-xs md:text-sm text-blue-200">Difíceis</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                <div className="text-2xl md:text-3xl font-bold text-purple-400">{stats.totalMemoryScore}/18</div>
-                <div className="text-xs md:text-sm text-blue-200">Jogos da Memória</div>
               </div>
             </div>
 
@@ -216,7 +224,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <Trophy className="w-5 h-5 text-yellow-400" />
                   <span className="text-lg font-bold text-white">
-                    Total: {stats.totalMemoryScore}/18 conexões
+                    Total: {stats.totalMemoryScore}/18 conexões ({stats.memoryPercentage.toFixed(0)}%)
                   </span>
                 </div>
                 <p className="text-sm text-blue-100">

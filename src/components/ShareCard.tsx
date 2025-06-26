@@ -96,45 +96,68 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
         {/* Main Stats - Flex grow to take available space */}
         <div className="relative z-10 px-6 flex-1 flex flex-col justify-center">
           <div className="bg-yellow-200/60 backdrop-blur-sm rounded-xl p-4 border border-yellow-300">
+            {/* Combined Score - Now includes memory games */}
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-900">{stats.correctAnswers}</div>
-                <div className="text-yellow-800 text-sm font-semibold">Acertos</div>
+                <div className="text-3xl font-bold text-yellow-900">{stats.totalEarnedPoints}</div>
+                <div className="text-yellow-800 text-sm font-semibold">Pontos Totais</div>
+                <div className="text-yellow-700 text-xs">de {stats.totalPossiblePoints}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-yellow-900">{stats.percentage.toFixed(0)}%</div>
                 <div className="text-yellow-800 text-sm font-semibold">Aproveitamento</div>
+                <div className="text-yellow-700 text-xs">Geral</div>
               </div>
             </div>
             
-            {/* Difficulty Stats */}
+            {/* Breakdown Stats */}
             <div className="border-t border-yellow-300 pt-3 mb-3">
-              <h4 className="text-yellow-900 text-sm font-bold text-center mb-3">Desempenho por Dificuldade</h4>
+              <h4 className="text-yellow-900 text-sm font-bold text-center mb-3">Desempenho Detalhado</h4>
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="text-center bg-blue-100/80 rounded-lg py-2 border border-blue-200">
+                  <div className="text-xl font-bold text-blue-700">{stats.correctAnswers}/12</div>
+                  <div className="text-blue-600 text-xs font-semibold">Perguntas</div>
+                  <div className="text-blue-500 text-xs">{stats.questionsPercentage.toFixed(0)}%</div>
+                </div>
+                <div className="text-center bg-purple-100/80 rounded-lg py-2 border border-purple-200">
+                  <div className="text-xl font-bold text-purple-700">{stats.totalMemoryScore}/18</div>
+                  <div className="text-purple-600 text-xs font-semibold">Memória</div>
+                  <div className="text-purple-500 text-xs">{stats.memoryPercentage.toFixed(0)}%</div>
+                </div>
+              </div>
+              
+              {/* Difficulty Stats */}
               <div className="grid grid-cols-3 gap-2">
                 <div className="text-center bg-green-100/80 rounded-lg py-2 border border-green-200">
-                  <div className="text-xl font-bold text-green-700">{stats.easyCorrect}/4</div>
+                  <div className="text-lg font-bold text-green-700">{stats.easyCorrect}/4</div>
                   <div className="text-green-600 text-xs font-semibold">Fáceis</div>
                 </div>
                 <div className="text-center bg-yellow-100/80 rounded-lg py-2 border border-yellow-300">
-                  <div className="text-xl font-bold text-yellow-700">{stats.mediumCorrect}/4</div>
+                  <div className="text-lg font-bold text-yellow-700">{stats.mediumCorrect}/4</div>
                   <div className="text-yellow-600 text-xs font-semibold">Médias</div>
                 </div>
                 <div className="text-center bg-red-100/80 rounded-lg py-2 border border-red-200">
-                  <div className="text-xl font-bold text-red-700">{stats.hardCorrect}/4</div>
+                  <div className="text-lg font-bold text-red-700">{stats.hardCorrect}/4</div>
                   <div className="text-red-600 text-xs font-semibold">Difíceis</div>
                 </div>
               </div>
             </div>
 
-            {/* Memory Games Bonus */}
+            {/* Memory Games Individual Scores */}
             <div className="border-t border-yellow-300 pt-3">
-              <div className="text-center bg-purple-100/80 rounded-lg py-2 border border-purple-200">
-                <div className="flex items-center justify-center gap-1 mb-1">
-                  <Brain className="w-4 h-4 text-purple-700" />
-                  <span className="text-xs font-bold text-purple-700">BÔNUS MEMÓRIA</span>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="text-center bg-indigo-100/80 rounded-lg py-1.5 border border-indigo-200">
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[0] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 1</div>
                 </div>
-                <div className="text-xl font-bold text-purple-700">{stats.totalMemoryScore}/18</div>
-                <div className="text-purple-600 text-xs font-semibold">3 Jogos da Memória</div>
+                <div className="text-center bg-indigo-100/80 rounded-lg py-1.5 border border-indigo-200">
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[1] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 2</div>
+                </div>
+                <div className="text-center bg-indigo-100/80 rounded-lg py-1.5 border border-indigo-200">
+                  <div className="text-sm font-bold text-indigo-700">{stats.memoryGameScores[2] || 0}/6</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Jogo 3</div>
+                </div>
               </div>
             </div>
           </div>

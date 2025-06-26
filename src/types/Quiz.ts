@@ -37,7 +37,12 @@ export interface GameStats {
   easyCorrect: number;
   mediumCorrect: number;
   hardCorrect: number;
-  percentage: number;
+  percentage: number; // Combined percentage including memory games
   memoryGameScores: number[];
   totalMemoryScore: number;
+  // New combined stats
+  totalPossiblePoints: number; // Total possible points (questions + memory)
+  totalEarnedPoints: number; // Total earned points (questions + memory)
+  questionsPercentage: number; // Questions only percentage
+  memoryPercentage: number; // Memory games only percentage
 }
