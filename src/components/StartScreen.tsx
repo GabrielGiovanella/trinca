@@ -90,9 +90,6 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
               um tempo diferente para responder. Termine com um jogo da memória bônus! No final, veja seu desempenho 
               e aprenda com as explicações detalhadas!
             </div>
-            <div className="text-xs md:text-sm text-orange-200 bg-orange-500/10 rounded-lg p-3 md:p-4 border border-orange-300/20">
-              ⏰ <strong>Tempos por dificuldade:</strong> Fáceis (15s), Médias (30s), Difíceis (45s), Jogo da Memória (1min)
-            </div>
           </div>
 
           {/* Nome do Jogador */}
