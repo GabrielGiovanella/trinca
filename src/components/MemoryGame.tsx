@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Clock, Star, RotateCcw, Trophy, Brain, Zap } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Star, RotateCcw, Trophy, Brain, Zap, AlertTriangle } from 'lucide-react';
 import { MemoryPair } from '../types/Quiz';
 import { memoryGame1, memoryGame2, memoryGame3 } from '../data/memoryGames';
 
@@ -20,6 +20,8 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
   const [gameCompleted, setGameCompleted] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [memoryPairs, setMemoryPairs] = useState<MemoryPair[]>([]);
+  const [consecutiveErrors, setConsecutiveErrors] = useState(0);
+  const [gameFailedByErrors, setGameFailedByErrors] = useState(false);
 
   // Get the appropriate memory game data
   useEffect(() => {
@@ -59,17 +61,29 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
 
   // Handle timeout
   useEffect(() => {
-    if (timeLeft === 0 && !gameCompleted) {
+    if (timeLeft === 0 && !gameCompleted && !gameFailedByErrors) {
       setGameCompleted(true);
       setShowFeedback(true);
       setTimeout(() => {
         onComplete(score);
       }, 2000);
     }
-  }, [timeLeft, gameCompleted, score, onComplete]);
+  }, [timeLeft, gameCompleted, gameFailedByErrors, score, onComplete]);
+
+  // Handle game failure by consecutive errors
+  useEffect(() => {
+    if (consecutiveErrors >= 3 && !gameCompleted && !gameFailedByErrors) {
+      setGameFailedByErrors(true);
+      setGameCompleted(true);
+      setShowFeedback(true);
+      setTimeout(() => {
+        onComplete(score);
+      }, 3000);
+    }
+  }, [consecutiveErrors, gameCompleted, gameFailedByErrors, score, onComplete]);
 
   const handleLeftClick = (index: number) => {
-    if (matches.has(index) || gameCompleted) return;
+    if (matches.has(index) || gameCompleted || gameFailedByErrors) return;
     setSelectedLeft(index);
     
     if (selectedRight !== null) {
@@ -78,7 +92,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
   };
 
   const handleRightClick = (index: number) => {
-    if (matches.has(index + 100) || gameCompleted) return; // +100 to differentiate right items
+    if (matches.has(index + 100) || gameCompleted || gameFailedByErrors) return; // +100 to differentiate right items
     setSelectedRight(index);
     
     if (selectedLeft !== null) {
@@ -97,9 +111,10 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
     );
 
     if (correctPair) {
-      // Correct match
+      // Correct match - reset consecutive errors
       setMatches(prev => new Set([...prev, leftIndex, rightIndex + 100]));
       setScore(prev => prev + 1);
+      setConsecutiveErrors(0);
       
       // Check if game is completed
       if (matches.size + 2 >= memoryPairs.length * 2) {
@@ -110,9 +125,10 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
         }, 1500);
       }
     } else {
-      // Wrong match
+      // Wrong match - increment consecutive errors
       const wrongKey = `${leftIndex}-${rightIndex}`;
       setWrongMatches(prev => new Set([...prev, wrongKey]));
+      setConsecutiveErrors(prev => prev + 1);
       
       // Remove wrong match indication after 1 second
       setTimeout(() => {
@@ -162,7 +178,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
       case 2:
         return "🧠 Jogo da Memória 2";
       case 3:
-        return "🧠 Jogo da Memória 2";
+        return "🧠 Jogo da Memória 3";
       default:
         return "🧠 Jogo da Memória - Bônus";
     }
@@ -184,8 +200,20 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
       <div className="max-w-6xl w-full">
+        {/* Game Failed by Errors Message */}
+        {gameFailedByErrors && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-gradient-to-br from-red-500 to-red-600 text-white p-8 rounded-3xl shadow-2xl max-w-md w-full text-center border border-red-300">
+              <AlertTriangle className="w-16 h-16 mx-auto mb-4 animate-pulse" />
+              <h3 className="text-2xl font-bold mb-3">❌ Jogo Encerrado!</h3>
+              <p className="text-red-100 text-lg mb-2">Você errou 3 combinações seguidas.</p>
+              <p className="text-red-200 text-base">Pontuação final: {score} conexões corretas</p>
+            </div>
+          </div>
+        )}
+
         {/* Timeout Message */}
-        {timeLeft === 0 && !gameCompleted && (
+        {timeLeft === 0 && !gameCompleted && !gameFailedByErrors && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-orange-300">
               <Clock className="w-16 h-16 mx-auto mb-4 animate-pulse" />
@@ -196,7 +224,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
         )}
 
         {/* Completion Message */}
-        {gameCompleted && score === memoryPairs.length && (
+        {gameCompleted && score === memoryPairs.length && !gameFailedByErrors && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-gradient-to-br from-green-500 to-emerald-500 text-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-green-300">
               <Trophy className="w-16 h-16 mx-auto mb-4 animate-bounce" />
@@ -239,6 +267,34 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
                 ></div>
               </div>
             </div>
+
+            {/* Consecutive Errors Warning */}
+            {consecutiveErrors > 0 && (
+              <div className="mb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-red-300 font-medium flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4" />
+                    Erros Consecutivos
+                  </span>
+                  <span className={`font-bold ${consecutiveErrors >= 2 ? 'text-red-300 animate-pulse' : 'text-orange-300'}`}>
+                    {consecutiveErrors}/3
+                  </span>
+                </div>
+                <div className="w-full bg-white/20 rounded-full h-2">
+                  <div 
+                    className={`h-2 rounded-full transition-all duration-500 shadow-lg ${
+                      consecutiveErrors >= 2 ? 'bg-gradient-to-r from-red-400 to-red-500 animate-pulse' : 
+                      'bg-gradient-to-r from-orange-400 to-red-400'
+                    }`}
+                    style={{ width: `${(consecutiveErrors / 3) * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-xs text-red-200 mt-1 text-center">
+                  {consecutiveErrors === 1 && "⚠️ Cuidado! Mais 2 erros seguidos e o jogo será encerrado"}
+                  {consecutiveErrors === 2 && "🚨 ATENÇÃO! Mais 1 erro e o jogo será encerrado"}
+                </p>
+              </div>
+            )}
             
             {/* Time Progress Bar */}
             <div>
@@ -280,11 +336,21 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
               <p className="text-gray-700 font-medium mb-2">
                 Clique em uma frase da esquerda e depois em sua correspondente da direita
               </p>
-              <div className="flex items-center justify-center gap-2">
-                <Zap className="w-5 h-5 text-purple-600" />
-                <span className="text-purple-700 font-bold text-lg">
-                  Conexões: {score}/{memoryPairs.length}
-                </span>
+              <div className="flex items-center justify-center gap-4 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-purple-600" />
+                  <span className="text-purple-700 font-bold text-lg">
+                    Conexões: {score}/{memoryPairs.length}
+                  </span>
+                </div>
+                {consecutiveErrors > 0 && (
+                  <div className="flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-red-600" />
+                    <span className="text-red-700 font-bold text-lg">
+                      Erros: {consecutiveErrors}/3
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -303,7 +369,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
                   key={`left-${index}`}
                   onClick={() => handleLeftClick(index)}
                   className={getItemClass(index)}
-                  disabled={matches.has(index) || gameCompleted}
+                  disabled={matches.has(index) || gameCompleted || gameFailedByErrors}
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-left flex-1 leading-relaxed">{item}</span>
@@ -331,7 +397,7 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
                   key={`right-${index}`}
                   onClick={() => handleRightClick(index)}
                   className={getItemClass(index, true)}
-                  disabled={matches.has(index + 100) || gameCompleted}
+                  disabled={matches.has(index + 100) || gameCompleted || gameFailedByErrors}
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-left flex-1 leading-relaxed">{item}</span>
@@ -377,8 +443,8 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
                   <span>Conexões erradas ficam vermelhas temporariamente</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span>Conecte todas as frases antes do tempo acabar!</span>
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <span className="font-bold">⚠️ 3 erros seguidos = jogo encerrado!</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
