@@ -85,9 +85,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
 
           <div className="space-y-2 md:space-y-3 mb-4 md:mb-8">
             <div className="text-xs md:text-sm text-blue-200 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
-              💡 <strong>Como funciona:</strong> Responda às 14 perguntas sobre a Ordem DeMolay, 
-              começando pelas mais fáceis até as mais desafiadoras. Cada nível de dificuldade tem 
-              um tempo diferente para responder. Termine com um jogo da memória bônus! No final, veja seu desempenho 
+              💡 <strong>Como funciona:</strong> Teste seus conhecimentos sobre a Ordem DeMolay respondendo a 14 perguntas em ordem crescente de dificuldade, com tempos variados por fase. No final, jogue um bônus de memória e confira seu desempenho com explicações detalhadas!
               e aprenda com as explicações detalhadas!
             </div>
           </div>
