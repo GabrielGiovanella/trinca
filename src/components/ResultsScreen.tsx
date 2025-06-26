@@ -47,7 +47,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
       message: `Bom trabalho, ${name}! Você está no caminho certo. Continue estudando para aprimorar ainda mais seus conhecimentos sobre a Ordem DeMolay.`, 
       color: "text-yellow-600", 
       icon: Star,
-      title: "⭐ BOA PERFORMANCE!"
+      title: "⭐ BOA PERFORMANCE! MAS PODE MELHORAR..."
     };
     return { 
       message: `Continue estudando, ${name}! A Ordem DeMolay tem muito a ensinar. Não desanime, cada erro é uma oportunidade de aprendizado!`, 
