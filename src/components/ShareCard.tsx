@@ -64,7 +64,7 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
             <IconComponent className="w-4 h-4 text-yellow-900" />
           </div>
           <h1 className="text-yellow-900 text-sm font-bold mb-0.5 drop-shadow-sm">Desafio da Trinca</h1>
-          <p className="text-yellow-800 text-xs font-semibold">Ordem DeMolay</p>
+          <p className="text-yellow-800 text-xs font-semibold">Conhecimentos da Iniciação</p>
         </div>
 
         {/* Ultra Compact Player Name */}
