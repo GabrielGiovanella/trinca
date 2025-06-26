@@ -55,47 +55,47 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   const performance = getPerformanceMessage(stats.percentage, playerName);
   const IconComponent = performance.icon;
 
-  // Share screen - full screen optimized for taking screenshots
+  // Share screen - optimized for mobile screenshots
   if (showShareScreen) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex flex-col">
-        {/* Header with back button */}
-        <div className="flex items-center justify-between p-4 bg-black/20 backdrop-blur-sm">
+        {/* Compact Header with back button */}
+        <div className="flex items-center justify-between p-3 bg-black/20 backdrop-blur-sm">
           <button
             onClick={() => setShowShareScreen(false)}
             className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
             <span className="text-sm">Voltar</span>
           </button>
           
           <div className="flex items-center gap-2 text-white/90">
-            <Camera className="w-5 h-5" />
-            <span className="text-sm font-medium">Tire um print desta tela</span>
+            <Camera className="w-4 h-4" />
+            <span className="text-xs font-medium">Tire um print</span>
           </div>
           
-          <div className="w-16"></div> {/* Spacer for centering */}
+          <div className="w-12"></div> {/* Spacer for centering */}
         </div>
 
-        {/* Main content - centered card */}
-        <div className="flex-1 flex items-center justify-center p-4">
-          <div className="transform scale-90 sm:scale-100 md:scale-110">
+        {/* Main content - perfectly centered and sized for mobile */}
+        <div className="flex-1 flex items-center justify-center p-2">
+          <div className="w-full max-w-sm flex justify-center">
             <ShareCard playerName={playerName} stats={stats} />
           </div>
         </div>
 
-        {/* Bottom instructions */}
-        <div className="p-4 bg-black/20 backdrop-blur-sm">
-          <div className="max-w-md mx-auto text-center">
-            <p className="text-white/90 text-sm mb-2">
-              📸 <strong>Tire um print desta tela</strong> e publique nos seus Stories
+        {/* Compact Bottom instructions */}
+        <div className="p-3 bg-black/20 backdrop-blur-sm">
+          <div className="max-w-sm mx-auto text-center">
+            <p className="text-white/90 text-xs mb-2">
+              📸 <strong>Tire um print desta tela</strong> e publique nos Stories
             </p>
             <div className="flex justify-center gap-2 flex-wrap">
-              <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
                 @demolaybrasil
               </span>
               <span className="text-white/70 text-xs">•</span>
-              <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
                 @demolayrs
               </span>
             </div>
