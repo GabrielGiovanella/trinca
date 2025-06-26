@@ -6,6 +6,7 @@ export interface Question {
   difficulty: 'easy' | 'medium' | 'hard';
   explanation: string;
   videoUrl?: string;
+  imageUrl?: string;
 }
 
 export interface ShuffledQuestion extends Question {

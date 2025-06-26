@@ -39,7 +39,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'easy',
-    explanation: "O Patriotismo em tempos de paz é demonstrado vivendo como um cidadão honrado, cumprindo seus deveres cívicos, respeitando as leis e contribuindo positivamente para o desenvolvimento da sociedade e do país."
+    explanation: "O Patriotismo em tempos de paz é demonstrado vivendo como um cidadão honrado, cumprindo seus deveres cívicos, respeitando as leis e contribuindo positivamente para o desenvolvimento da sociedade e do país.",
+    imageUrl: "/src/assets/Captura de Tela 2025-06-24 às 08.43.36.png"
   },
   {
     id: 4,
