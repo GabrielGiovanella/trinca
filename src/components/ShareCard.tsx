@@ -25,7 +25,7 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
     };
     if (percentage >= 50) return { 
       icon: Star,
-      title: "BOA!",
+      title: "BOA! MAS PODE MELHORAR...",
       emoji: "⭐",
       color: "from-yellow-300 to-yellow-500",
       textColor: "text-yellow-900"
