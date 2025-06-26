@@ -131,15 +131,15 @@ export const ShareCard: React.FC<ShareCardProps> = ({ playerName, stats }) => {
               <div className="grid grid-cols-3 gap-1">
                 <div className="text-center bg-indigo-100/80 rounded py-0.5 border border-indigo-200">
                   <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[0] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">Jogo 1</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Bônus 1</div>
                 </div>
                 <div className="text-center bg-indigo-100/80 rounded py-0.5 border border-indigo-200">
                   <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[1] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">Jogo 2</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Bônus 2</div>
                 </div>
                 <div className="text-center bg-indigo-100/80 rounded py-0.5 border border-indigo-200">
                   <div className="text-xs font-bold text-indigo-700">{stats.memoryGameScores[2] || 0}/6</div>
-                  <div className="text-indigo-600 text-xs font-semibold">Jogo 3</div>
+                  <div className="text-indigo-600 text-xs font-semibold">Bônus 3</div>
                 </div>
               </div>
             </div>
