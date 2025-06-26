@@ -66,11 +66,6 @@ export const memoryGame2: MemoryPair[] = [
     left: "6º Preceptor",
     right: "Pureza"
   }
-   {
-    id: 7,
-    left: "7º Preceptor",
-    right: "Patriotismo"
-  }
 ];
 
 // Jogo da Memória 3 - Final (mantém o existente)
