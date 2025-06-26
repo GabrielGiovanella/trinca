@@ -13,7 +13,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     difficulty: 'easy',
-    explanation: "Na simbologia da Ordem DeMolay, o Oeste representa o pôr do sol e o fim da vida, simbolizando a conclusão do ciclo vital e a reflexão sobre os ensinamentos recebidos ao longo da jornada."
+    explanation: "Na simbologia da Ordem DeMolay, o Oeste representa o pôr do sol e o fim da vida, simbolizando a conclusão do ciclo vital e a reflexão sobre os ensinamentos recebidos ao longo da jornada.",
+    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
     id: 2,
@@ -26,7 +27,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     difficulty: 'easy',
-    explanation: "O Sul simboliza o meio-dia da vida e o tempo de reflexão, representando o momento de maior maturidade e sabedoria, quando o indivíduo pode refletir sobre suas experiências e compartilhar seus conhecimentos."
+    explanation: "O Sul simboliza o meio-dia da vida e o tempo de reflexão, representando o momento de maior maturidade e sabedoria, quando o indivíduo pode refletir sobre suas experiências e compartilhar seus conhecimentos.",
+    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
     id: 3,
@@ -39,7 +41,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'easy',
-    explanation: "O Patriotismo em tempos de paz é demonstrado vivendo como um cidadão honrado, cumprindo seus deveres cívicos, respeitando as leis e contribuindo positivamente para o desenvolvimento da sociedade e do país."
+    explanation: "O Patriotismo em tempos de paz é demonstrado vivendo como um cidadão honrado, cumprindo seus deveres cívicos, respeitando as leis e contribuindo positivamente para o desenvolvimento da sociedade e do país.",
+    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
     id: 4,
@@ -52,7 +55,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     difficulty: 'easy',
-    explanation: "A Ordem DeMolay preza pelo bem-estar e conforto de seus candidatos. Se um candidato manifestar desconforto com o uso da venda, deve ser permitido que ele participe da cerimônia sem ela, garantindo que a experiência seja positiva e respeitosa."
+    explanation: "A Ordem DeMolay preza pelo bem-estar e conforto de seus candidatos. Se um candidato manifestar desconforto com o uso da venda, deve ser permitido que ele participe da cerimônia sem ela, garantindo que a experiência seja positiva e respeitosa.",
+    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
   {
     id: 5,
@@ -65,7 +69,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     difficulty: 'easy',
-    explanation: "O Leste simboliza a manhã da vida e o início da jornada, representando o nascimento, os primeiros passos na vida e o começo da busca pelo conhecimento e desenvolvimento pessoal na Ordem DeMolay."
+    explanation: "O Leste simboliza a manhã da vida e o início da jornada, representando o nascimento, os primeiros passos na vida e o começo da busca pelo conhecimento e desenvolvimento pessoal na Ordem DeMolay.",
+    videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
   },
 
   // Perguntas Médias (5)
@@ -80,7 +85,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 0,
     difficulty: 'medium',
-    explanation: "O lema da Ordem DeMolay é 'Fidelitas et Veritas', que significa 'Fidelidade e Verdade' em latim, representando os valores fundamentais da organização."
+    explanation: "O lema da Ordem DeMolay é 'Fidelitas et Veritas', que significa 'Fidelidade e Verdade' em latim, representando os valores fundamentais da organização.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 7,
@@ -93,7 +99,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'medium',
-    explanation: "O primeiro Capítulo DeMolay foi formado por 9 jovens, conhecidos como os 'Nove Fundadores Originais', que se reuniram com Frank S. Land em 1919."
+    explanation: "O primeiro Capítulo DeMolay foi formado por 9 jovens, conhecidos como os 'Nove Fundadores Originais', que se reuniram com Frank S. Land em 1919.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 8,
@@ -106,7 +113,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'medium',
-    explanation: "Amor Filial é a virtude cardeal que representa o amor, respeito e obediência aos pais, sendo considerada uma das mais importantes na formação do jovem DeMolay."
+    explanation: "Amor Filial é a virtude cardeal que representa o amor, respeito e obediência aos pais, sendo considerada uma das mais importantes na formação do jovem DeMolay.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 9,
@@ -119,7 +127,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'medium',
-    explanation: "Os maçons que supervisionam um Capítulo DeMolay são chamados de Conselheiros, sendo responsáveis pela orientação e supervisão das atividades dos jovens."
+    explanation: "Os maçons que supervisionam um Capítulo DeMolay são chamados de Conselheiros, sendo responsáveis pela orientação e supervisão das atividades dos jovens.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 10,
@@ -132,7 +141,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'medium',
-    explanation: "A Rosa Branca é a flor oficial da Ordem DeMolay, simbolizando a pureza, a inocência e a nobreza de caráter que se espera dos jovens membros."
+    explanation: "A Rosa Branca é a flor oficial da Ordem DeMolay, simbolizando a pureza, a inocência e a nobreza de caráter que se espera dos jovens membros.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
 
   // Perguntas Difíceis (4) - Removemos a 15ª pergunta para o jogo da memória
@@ -147,7 +157,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'hard',
-    explanation: "A primeira reunião da Ordem DeMolay aconteceu em Kansas City, Missouri, no edifício da Loja Maçônica Ivanhoe nº 446, em 31 de março de 1919."
+    explanation: "A primeira reunião da Ordem DeMolay aconteceu em Kansas City, Missouri, no edifício da Loja Maçônica Ivanhoe nº 446, em 31 de março de 1919.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 12,
@@ -160,7 +171,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'hard',
-    explanation: "Frank S. Land trabalhava como vendedor de seguros de vida quando fundou a Ordem DeMolay, sendo também um ativo membro da Maçonaria."
+    explanation: "Frank S. Land trabalhava como vendedor de seguros de vida quando fundou a Ordem DeMolay, sendo também um ativo membro da Maçonaria.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 13,
@@ -173,7 +185,8 @@ export const questions: Question[] = [
     ],
     correctAnswer: 0,
     difficulty: 'hard',
-    explanation: "Louis Gordon Lower foi o primeiro jovem a ser iniciado na Ordem DeMolay e também se tornou o primeiro Mestre Conselheiro da organização."
+    explanation: "Louis Gordon Lower foi o primeiro jovem a ser iniciado na Ordem DeMolay e também se tornou o primeiro Mestre Conselheiro da organização.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
     id: 14,
@@ -186,6 +199,7 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'hard',
-    explanation: "A Ordem DeMolay chegou ao Brasil em 1963, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país."
+    explanation: "A Ordem DeMolay chegou ao Brasil em 1963, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país.",
+    videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   }
 ];
