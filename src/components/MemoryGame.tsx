@@ -158,11 +158,11 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
   const getGameTitle = () => {
     switch (gameNumber) {
       case 1:
-        return "🧠 Jogo da Memória - Simbologia dos Pontos Cardeais";
+        return "🧠 Jogo da Memória 1";
       case 2:
-        return "🧠 Jogo da Memória - Virtudes e Símbolos";
+        return "🧠 Jogo da Memória 2";
       case 3:
-        return "🧠 Jogo da Memória - História da Ordem";
+        return "🧠 Jogo da Memória 2";
       default:
         return "🧠 Jogo da Memória - Bônus";
     }
@@ -171,11 +171,11 @@ export const MemoryGame: React.FC<MemoryGameProps> = ({ onComplete, timeLeft, ga
   const getGameDescription = () => {
     switch (gameNumber) {
       case 1:
-        return "Conecte os pontos cardeais com seus significados simbólicos na Ordem DeMolay";
+        return "Conecte a primeira coluna com a segunda";
       case 2:
-        return "Conecte as virtudes e símbolos com suas definições na Ordem DeMolay";
+        return "Conecte a primeira coluna com a segunda";
       case 3:
-        return "Conecte os fatos históricos com suas informações sobre a Ordem DeMolay";
+        return "Conecte a primeira coluna com a segunda";
       default:
         return "Conecte as frases relacionadas à Ordem DeMolay";
     }
