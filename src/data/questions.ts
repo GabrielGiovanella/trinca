@@ -90,16 +90,16 @@ export const questions: Question[] = [
   },
   {
     id: 8,
-    question: "Qual virtude cardeal representa o amor e respeito pelos pais?",
+    question: "Quais as cores estão presentes nas capas utilizadas pelos oficiais em cerimônia:",
     options: [
-      "Reverência",
-      "Amor Filial",
-      "Cortesia",
-      "Fidelidade"
+      "Cinza escuro, vermelho e laranja.",
+      "Preto, vermelho e verde fosco.",
+      "Vermelho, cinza escura e dourado.",
+      "Preto, vermelho e amarelo."
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     difficulty: 'medium',
-    explanation: "Amor Filial é a virtude cardeal que representa o amor, respeito e obediência aos pais, sendo considerada uma das mais importantes na formação do jovem DeMolay.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
