@@ -148,16 +148,16 @@ export const questions: Question[] = [
   },
   {
     id: 13,
-    question: "Qual o nome do primeiro jovem a ser iniciado na Ordem DeMolay?",
+    question: "Qual o nome do MCE do Rio Grande do Sul?",
     options: [
-      "Louis Lower",
-      "Ivan Bentley",
-      "Gorman McBride",
-      "Jerome Jacobson"
+      "Gabriel Giovanella",
+      "Augusto Knak",
+      "Lorenzo Gabriel de Azevedo Viera",
+      "Elder Luis Gama"
     ],
     correctAnswer: 0,
     difficulty: 'hard',
-    explanation: "Louis Gordon Lower foi o primeiro jovem a ser iniciado na Ordem DeMolay e também se tornou o primeiro Mestre Conselheiro da organização.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
@@ -171,7 +171,7 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'hard',
-    explanation: "A Ordem DeMolay chegou ao Brasil em 1980, com a fundação do primeiro Capítulo no Rio de Janeiro, iniciando a expansão da organização no país.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   }
 ];
