@@ -104,16 +104,16 @@ export const questions: Question[] = [
   },
   {
     id: 9,
-    question: "Como são chamados os maçons que supervisionam um Capítulo DeMolay?",
+    question: "Quem é o oficial responsável por guiar os candidatos durante a cerimônia de iniciação:",
     options: [
-      "Padrinhos",
-      "Conselheiros",
-      "Mentores",
-      "Orientadores"
+      "Capelão",
+      "Mestre de Cerimônias",
+      "1º Diácono",
+      "Sentinela"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'medium',
-    explanation: "Os maçons que supervisionam um Capítulo DeMolay são chamados de Conselheiros, sendo responsáveis pela orientação e supervisão das atividades dos jovens.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
 
