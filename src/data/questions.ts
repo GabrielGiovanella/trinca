@@ -148,7 +148,7 @@ export const questions: Question[] = [
   },
   {
     id: 13,
-    question: "Qual o nome do MCE do Rio Grande do Sul?",
+    question: "Qual o nome do atual MCE do Rio Grande do Sul?",
     options: [
       "Gabriel Giovanella",
       "Augusto Knak",
