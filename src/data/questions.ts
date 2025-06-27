@@ -39,7 +39,7 @@ export const questions: Question[] = [
       "Apenas os oficiais se levantam.",
       "Todos se levantam."
     ],
-    correctAnswer: 4,
+    correctAnswer: 3,
     difficulty: 'easy',
     explanation: "Lorem Ipsum.",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
