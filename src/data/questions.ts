@@ -134,16 +134,16 @@ export const questions: Question[] = [
   },
   {
     id: 12,
-    question: "Qual era a profissão de Frank S. Land quando fundou a Ordem DeMolay?",
+    question: "No final da cerimônia de iniciação, o Mestre Conselheiro profere uma fala que realça sobre a próxima fase da jornada DeMolay. A que o ele se refere?",
     options: [
-      "Professor",
-      "Vendedor de seguros de vida",
-      "Advogado",
-      "Engenheiro"
+      "Receber o Grau DeMolay.",
+      "Trocar a coroa da juventude pela da maioridade.",
+      "Entender a simbologia apresentada na iniciação.",
+      "Se tornar um Sênior DeMolay."
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'hard',
-    explanation: "Frank S. Land trabalhava como vendedor de seguros de vida quando fundou a Ordem DeMolay, sendo também um ativo membro da Maçonaria.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
