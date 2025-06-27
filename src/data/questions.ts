@@ -11,7 +11,7 @@ export const questions: Question[] = [
       "A manhã da vida, início da jornada.",
       "A morte e o renascimento."
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     difficulty: 'easy',
     explanation: "Lorem Ipsum set do tu gloriam",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
