@@ -120,16 +120,16 @@ export const questions: Question[] = [
   // Perguntas Difíceis (4)
   {
     id: 11,
-    question: "Em que cidade e estado americano foi fundada a primeira reunião da Ordem DeMolay?",
+    question: "Após o juramento realizado na cerimônia de iniciação, o Mestre Conselheiro, solicita que os candidatos beijem a bíblia sagrada a fim de selarem sua promessa, e posteriormente:",
     options: [
-      "Kansas City, Kansas",
-      "Kansas City, Missouri",
-      "Kansas City, Oklahoma",
-      "Kansas City, Iowa"
+      "Ele retorna ao seu posto e continua a cerimônia.",
+      "Beija a bíblia sagrada, em sinal de fidelidade e respeito.",
+      "Estende aos candidatos a mão direita, símbolo de companheirismo.",
+      "Realça o sinal secreto da Ordem DeMolay aos presentes."
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'hard',
-    explanation: "A primeira reunião da Ordem DeMolay aconteceu em Kansas City, Missouri, no edifício da Loja Maçônica Ivanhoe nº 446, em 31 de março de 1919.",
+    explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
