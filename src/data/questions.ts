@@ -25,7 +25,7 @@ export const questions: Question[] = [
       "O meio-dia da vida e o tempo de reflexão.",
       "A velhice e a decadência."
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     difficulty: 'easy',
     explanation: "Lorem Ipsum",
     videoUrl: "https://www.youtube.com/embed/YfOuvJOKeXU"
