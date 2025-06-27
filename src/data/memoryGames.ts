@@ -1,6 +1,6 @@
 import { MemoryPair } from '../types/Quiz';
 
-// Jogo da Memória 1 - Substitui a 5ª pergunta fácil
+// Jogo da Memória 1 
 export const memoryGame1: MemoryPair[] = [
   {
     id: 1,
@@ -9,18 +9,18 @@ export const memoryGame1: MemoryPair[] = [
   },
   {
     id: 2,
-    left: "Sul",
+    left: "Oeste",
     right: "Meio-dia da vida e reflexão"
   },
   {
     id: 3,
-    left: "Oeste",
+    left: "Sul",
     right: "Pôr do sol e fim da vida"
   },
   {
     id: 4,
-    left: "Norte",
-    right: "Meia-noite da vida e descanso"
+    left: "MCE do RS",
+    right: "Gabriel Giovanella"
   },
   {
     id: 5,
@@ -34,7 +34,7 @@ export const memoryGame1: MemoryPair[] = [
   }
 ];
 
-// Jogo da Memória 2 - Substitui a 5ª pergunta média
+// Jogo da Memória 2 
 export const memoryGame2: MemoryPair[] = [
   {
     id: 1,
@@ -68,7 +68,7 @@ export const memoryGame2: MemoryPair[] = [
   }
 ];
 
-// Jogo da Memória 3 - Final (mantém o existente)
+// Jogo da Memória 3
 export const memoryGame3: MemoryPair[] = [
   {
     id: 1,
@@ -87,17 +87,17 @@ export const memoryGame3: MemoryPair[] = [
   },
   {
     id: 4,
-    left: "Louis Lower",
-    right: "Primeiro jovem iniciado"
+    left: "Tio",
+    right: "Forma que um maçom é chamado pelos DeMolays"
   },
   {
     id: 5,
-    left: "Vendedor de seguros",
-    right: "Profissão de Frank S. Land"
+    left: "MCEA do RS",
+    right: "Bruno Pasquetti"
   },
   {
     id: 6,
-    left: "1963",
+    left: "1980",
     right: "Ano de chegada ao Brasil"
   }
 ];
