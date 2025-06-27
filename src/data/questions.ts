@@ -76,16 +76,16 @@ export const questions: Question[] = [
   },
   {
     id: 7,
-    question: "Quantos jovens formaram o primeiro Capítulo DeMolay?",
+    question: "Sobre o colar que o Mestre Conselheiro utiliza na iniciação, responda:",
     options: [
-      "7 jovens",
-      "9 jovens",
-      "11 jovens",
-      "13 jovens"
+      "É de cor amarela e é o único oficial que o utiliza em cerimônia.",
+      "Todos os oficiais presentes na reunião usam o mesmo colar.",
+      "O colar é composto por uma fita vermelha e uma joia com imagens e simbologia diferentes, conforme o respectivo cargo.",
+      "O Mestre Conselheiro é o único oficial na Ordem DeMolay que pode utilizar um colar."
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'medium',
-    explanation: "O primeiro Capítulo DeMolay foi formado por 9 jovens, conhecidos como os 'Nove Fundadores Originais', que se reuniram com Frank S. Land em 1919.",
+    explanation: "Lorem Ipsum.",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
