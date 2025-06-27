@@ -71,7 +71,7 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     difficulty: 'medium',
-    explanation: "O lema da Ordem DeMolay é 'Fidelitas et Veritas', que significa 'Fidelidade e Verdade' em latim, representando os valores fundamentais da organização.",
+    explanation: "Lorem Ipsum Set.",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
   },
   {
