@@ -62,14 +62,14 @@ export const questions: Question[] = [
   // Perguntas Médias (4) - 5ª pergunta substituída por jogo da memória
   {
     id: 6,
-    question: "Qual é o lema da Ordem DeMolay?",
+    question: "A Coroa da Juventude é conduzida na jornada por:",
     options: [
-      "Fidelitas et Veritas",
-      "Semper Fidelis",
+      "Um dos Preceptores.",
+      "O Primeiro Diácono.",
       "Per Aspera Ad Astra",
       "Virtus et Honor"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     difficulty: 'medium',
     explanation: "O lema da Ordem DeMolay é 'Fidelitas et Veritas', que significa 'Fidelidade e Verdade' em latim, representando os valores fundamentais da organização.",
     videoUrl: "https://www.youtube.com/embed/A_xcpIr9vxs?start=4"
